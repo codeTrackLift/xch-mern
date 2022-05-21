@@ -1,7 +1,7 @@
 {
-  "name": "goals",
+  "name": "xch-mern",
   "version": "1.0.0",
-  "description": "Goal Setter App",
+  "description": "MIT xCHANGE | MERN BadBank",
   "main": "server.js",
   "scripts": {
     "start": "node backend/server.js",
