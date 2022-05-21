@@ -26,8 +26,8 @@ export const Create = () => {
             toast.error(message)
         }
 
-        if(isSuccess || user) {
-            
+        if(isSuccess && user) {
+            toast.info(`Welcome to the xCHANGE ${capitalize(user.name)}`)
         }
 
         dispatch(reset())
@@ -51,6 +51,10 @@ export const Create = () => {
 
     const onSubmit = (e) => {
         e.preventDefault()
+        if (isError) {
+            toast.error(message)
+            return
+        }
         if (!/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i
         .test(email)) {
             toast.error('Invalid email address')
@@ -70,7 +74,7 @@ export const Create = () => {
             }
 
             dispatch(register(userData))
-            toast.info(`Welcome to the xCHANGE ${capitalize(name)}!`)
+            
             setFormData({
                 name: '',
                 email: '',
