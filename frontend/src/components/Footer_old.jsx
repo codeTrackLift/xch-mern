@@ -1,12 +1,9 @@
 import React from 'react';
-import { FooterList } from './partials/FooterList';
 
-import xChange from '../images/xChange.gif';
 import youtube from '../images/yt_logo_light.png'
-import gitHub from '../images/gitHubLogoBlack.png';
+import gitHub from '../images/gitHubLogoWhite.png';
 import twitter from '../images/twitterLogoBlue.png';
 import linkedIn from '../images/linkedInLogoBlue.png';
-import giphySecurity from '../images/giphySecurity.gif';
 
 import '../styles/footer.css';
 
@@ -21,15 +18,10 @@ const h4Style = {
     marginTop: '1rem',
 }
 
-const xChangeStyle = {
-    width: '20rem',
-    maxWidth: '90vw',
-}
-
-const securityStyle = {
-    width: '100%',
-    maxWidth: '30rem',
-    display: 'block',
+const cBPStyle = {
+    height:'2rem',
+    padding:'0 0.5rem',
+    marginBottom: '-0.5rem',
 }
 
 export const Footer = () => {
@@ -37,13 +29,11 @@ export const Footer = () => {
     const currentYear = new Date().getFullYear();
 
     return (
-        <footer className='text-center mt-5' style={footerStyle}>
+        <footer style={footerStyle}>
 
-            <img src={xChange} className='img-fluid m-auto col-sm-4 imgHover' style={xChangeStyle} alt='MIT xCHANGE logo' />
-
-            <div id='socials' className='text-center'>
-                <h4 style={h4Style}>Follow us on the socials...</h4>
-                <a href="https://github.com/codeTrackLift/" 
+            <div id='socials'>
+                <br/>
+                <a href="https://github.com/codeTrackLift/goals#readme" 
                     target="_blank" rel='noreferrer'>
                     <img src={gitHub} id='gitHubLogo'
                         className='socialLogo' alt="GitHub Icon"/>
@@ -65,22 +55,17 @@ export const Footer = () => {
                 </a>
             </div>
 
-            <img id='giphySecurity' src={giphySecurity} alt="Security animated gif" style={securityStyle}/>
-            
-            <hr />
-            <FooterList />
-
             <div id='footer'>
-                <p>Copyright © {currentYear} 
+                <p style={{color:'silver'}}>Copyright © {currentYear} 
                     <img src="https://codetracklift.github.io/codeTrackLift/logos/pharma2code_icon.gif" 
-                        style={{height:'2rem',padding:'0 0.25rem'}}
+                        style={cBPStyle}
                         alt="codeByPete Logo."/>
                     <a href='https://www.codebypete.com/' target='_blank' rel='noreferrer'>
-                        <span className='fst-italic'>
+                        <span><em>
                             <span style={{color:"white"}}>code</span>
                             <span style={{color:"#00857c"}}>By</span>
                             <span style={{color:"lime"}}>Pete </span>
-                        </span>
+                        </em></span>
                     </a>
                 </p>
             </div>

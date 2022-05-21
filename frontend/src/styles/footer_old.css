@@ -47,6 +47,11 @@
     margin: 1rem auto;
 }
 
+#socials {
+    border-top: 1px solid gray;
+    margin-top: 2rem;
+}
+
 #socials>a>img {
     border-left: 4px solid transparent;
     border-right: 4px solid transparent;
@@ -54,8 +59,8 @@
 
 #socials>a>img:hover,
 #socials>a>img:focus {
-    border-left: 4px solid limegreen;
-    border-right: 4px solid limegreen;
+    border-left: 4px solid lime;
+    border-right: 4px solid lime;
     border-radius: 10px;
 }
 
@@ -74,7 +79,6 @@
 #twitterLogo {
     animation: 4s wiggle infinite 3s;
 }
-
 
 @keyframes wiggle {
     4% {

@@ -1,0 +1,24 @@
+#doNot {
+    font-weight: bolder;
+    transition: all 0.5s ease-in-out;
+    animation: accent 2s ease-in-out infinite;
+}
+
+@keyframes accent {
+    0% {
+        font-weight: bolder;
+    }
+    50% {
+        text-decoration: underline;
+        font-weight: normal;
+
+    }
+    100% {
+        font-weight: bolder;
+    }
+}
+
+#quickLogIn:hover {
+    background-color: #990033 !important;
+    color: white !important;
+}

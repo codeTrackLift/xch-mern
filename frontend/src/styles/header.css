@@ -1,0 +1,32 @@
+#heroLeft {
+    transition: all 0.25s ease-in-out;
+    opacity: 0;
+    transform: rotate(-180deg) scale(0.5);
+}
+
+#heroLeft.show {
+    opacity: 0.75;
+    transform: rotate(0deg);
+}
+
+#heroRight,#heroText {
+    transition: all 0.75s ease-in-out;
+    opacity: 0;
+    transform: translateX(-40vw) scale(0);
+}
+
+#heroRight.show,#heroText.show {
+    opacity: 0.85;
+    transform: translateX(0) scale(1);
+}
+
+#redRow {
+    transition: all 0.25s ease-in-out;
+    height: 0;
+    transform: translateY(2rem);
+}
+
+#redRow.show {
+    height: 18rem;
+    transform: translateY(0);
+}

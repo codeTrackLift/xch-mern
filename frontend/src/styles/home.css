@@ -1,0 +1,59 @@
+#signUpButton {
+    transition: all 0.25s ease-in-out;
+    transform: translateX(-10rem) translateY(1rem);
+    opacity: 0;
+    background-color: transparent;
+}
+
+#signUpButton.shift{
+    transform: translateX(0) translateY(-1.5rem);
+    opacity: 1;
+}
+
+@media (max-width: 325px) {
+    #signUpButton.shift {
+        transform: translateX(-1.5rem) translateY(-0.5rem);
+    }
+}
+
+#mobileEuro {
+    transition: all 0.5s ease-in-out;
+    transform: rotate(3deg);
+    opacity: 0.75;
+}
+
+#mobileEuro.shift {
+    animation: tilt 1.5s ease-in-out infinite alternate;
+}
+
+@keyframes tilt {
+    0% {
+        transform: rotate(3deg);
+        opacity: 0.75;
+    }
+    100% {
+        opacity: 1;
+        transform: translateX(1rem)  rotate(-1deg);
+    }
+}
+
+#pomodoroCard, #drumCalcCard {
+    transition: all 0.25s ease-in-out;
+    transform: translateX(-4rem);
+    opacity: 0;
+}
+
+#goalsCard,#markdownCard, #todoCard {
+    transition: all 0.25s ease-in-out;
+    transform: translateX(4rem);
+    opacity: 0;
+}
+
+#goalsCard.shift,
+#pomodoroCard.shift,
+#drumCalcCard.shift,
+#markdownCard.shift,
+#todoCard.shift {
+    transform: translateX(0);
+    opacity: 1 !important;
+}

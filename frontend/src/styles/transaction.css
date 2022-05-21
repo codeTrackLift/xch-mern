@@ -1,0 +1,22 @@
+#transactionImage {
+    transition: all 0.125s ease-in-out;
+    transform: rotateX(90deg) translateY(4rem) scale(0.5);
+    opacity: 0;
+}
+
+#transactionImage.show {
+    transform: rotateX(0) translateY(0) scale(1);
+    opacity: 1;
+}
+
+#transactionText {
+    transition: all 0.25s ease-in-out;
+    transform: translateX(-30vw);
+    opacity: 0;
+    font-variant: small-caps;
+}
+
+#transactionText.show {
+    transform: translateX(0);
+    opacity: 1;
+}

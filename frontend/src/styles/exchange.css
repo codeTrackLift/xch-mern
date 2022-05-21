@@ -1,0 +1,56 @@
+#exchangeRates {
+    background-color: transparent;
+    white-space: nowrap;
+    scrollbar-width: none;
+    width: 100vw;
+    max-width: 1400px;
+    overflow-x: scroll;
+    white-space: nowrap;
+    display: flex;
+    -ms-overflow-style: none;
+}
+
+#exchangeRates p {
+    color: black !important;
+    display: inline-block;
+    text-align: center;
+    padding: 14px;
+    text-decoration: none;
+    font-size: 1.25rem;
+    margin: auto;
+    transition: all 0.25s ease-in-out;
+}
+
+#exchangeRates a:hover {
+    transform: translateY(-1rem) !important;
+}
+
+header>div>::-webkit-scrollbar {
+    display: none;
+}
+
+#loading {
+    animation: loading 0.5s alternate infinite;
+}
+
+@keyframes loading {
+    0% {
+        color: black;
+    }
+    100% {
+        color: silver;
+    }
+}
+
+#calculator {
+    border-radius: 0px;
+}
+
+#calculator-button:hover {
+    background-color: cornflowerblue !important;
+    color: white !important;
+}
+
+#calculator-button:focus {
+    box-shadow: none;
+}
