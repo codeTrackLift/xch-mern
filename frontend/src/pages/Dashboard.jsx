@@ -5,6 +5,7 @@ import TransactionForm from '../components/TransactionForm'
 import TransactionItem from '../components/TransactionItem'
 import Spinner from '../components/Spinner'
 import { getTransactions, reset } from '../features/transactions/transactionSlice'
+import { deleteUser } from '../features/auth/authSlice'
 import capitalize from '../utils/capitalize'
 import Balance from '../components/Balance'
 
@@ -33,6 +34,10 @@ function Dashboard() {
         }
     }, [dispatch])
 
+    const onDeleteUser = () => {
+        dispatch(deleteUser(user._id))
+    }
+
     if (isLoading) {
         return <Spinner />
     }
@@ -41,7 +46,10 @@ function Dashboard() {
         <section className="heading">
             <h1><span style={{color:'silver'}}>Welcome</span> {user && capitalize(user.name)}</h1>
             <p>Transactions Dashboard</p>
-            <Balance />
+            {user && <div>
+                <Balance />
+            </div>}
+            <button onClick={onDeleteUser}>Delete User</button>
         </section>
 
         <TransactionForm />

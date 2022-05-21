@@ -2,6 +2,7 @@ const jwt = require('jsonwebtoken')
 const bcrypt = require('bcryptjs')
 const asyncHandler = require('express-async-handler')
 const User = require('../models/userModel')
+const Transaction = require('../models/transactionModel')
 
 // @desc    Register new user
 // @route   POST /api/users
@@ -84,8 +85,32 @@ const generateToken = (id) => {
     })
 }
 
+// @desc    Delete user
+// @route   DELETE /api/users/:id
+// @access  Private
+const deleteUser = asyncHandler(async (req, res) => {
+    const user = await User.findById(req.params.id)
+
+    if(!user) {
+        res.status(400)
+        throw new Error('User not found')
+    }
+
+    // Make sure the logged in user matches the user being deleted
+    if(req.user.id !== user.id) {
+        res.status(401)
+        throw new Error('User not authorized')
+    }
+
+    await Transaction.deleteMany({user: user.id})
+    await user.remove()
+
+    res.status(200).json({id: req.params.id})
+})
+
 module.exports = {
     registerUser,
     loginUser,
     getMe,
+    deleteUser,
 }
