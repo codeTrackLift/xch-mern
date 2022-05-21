@@ -47,46 +47,6 @@ export const getTransactions = createAsyncThunk(
     }
 )
 
-// Update transaction
-export const updateTransaction = createAsyncThunk(
-    'transactions/update', 
-    async(transactionData, thunkAPI) => { 
-        try {
-            const token = thunkAPI.getState().auth.user.token
-            return await transactionService.updateTransaction( 
-                transactionData.id, { value: transactionData.value }, token
-            )
-        } catch(error) {
-            const message = 
-            (error.responnse && 
-                error.response.data && 
-                error.response.data.message) ||
-            error.message || 
-            error.toString()
-            thunkAPI.rejectWithValue(message)
-        }
-    }
-)
-
-// Delete user transaction
-export const deleteTransaction = createAsyncThunk(
-    'transactions/delete', 
-    async(id, thunkAPI) => {
-        try {
-            const token = thunkAPI.getState().auth.user.token
-            return await transactionService.deleteTransaction(id, token)
-        } catch(error) {
-            const message = 
-            (error.response && 
-                error.response.data && 
-                error.response.data.message) || 
-            error.message || 
-            error.toString()
-            return thunkAPI.rejectWithValue(message)
-        }
-    }
-)
-
 export const transactionSlice = createSlice({
     name: 'transaction',
     initialState,
@@ -103,7 +63,7 @@ export const transactionSlice = createSlice({
                 state.isSuccess = true
                 state.transactions.push(action.payload)
                 state.transactions = state.transactions.sort((a, b) => 
-                    new Date(b.updatedAt) - new Date(a.updatedAt))
+                    new Date(b.createdAt) - new Date(a.createdAt))
             })
             .addCase(createTransaction.rejected, (state, action) => {
                 state.isLoading = false
@@ -119,40 +79,6 @@ export const transactionSlice = createSlice({
                 state.transactions = action.payload
             })
             .addCase(getTransactions.rejected, (state, action) => {
-                state.isLoading = false
-                state.isError = true
-                state.message = action.payload
-            })
-            .addCase(deleteTransaction.pending, (state) => {
-                state.isLoading = true
-            })
-            .addCase(deleteTransaction.fulfilled, (state, action) => {
-                state.isLoading = false
-                state.isSuccess = true
-                state.transactions = state.transactions.filter((transaction) => 
-                    transaction._id !== action.payload.id
-                )
-            })
-            .addCase(deleteTransaction.rejected, (state, action) => {
-                state.isLoading = false
-                state.isError = true
-                state.message = action.payload
-            })
-            .addCase(updateTransaction.pending, state => {
-                state.isLoading = true
-            })
-            .addCase(updateTransaction.fulfilled, (state, action) => {
-                state.isLoading = false
-                state.isSuccess = true
-                state.transactions = state.transactions.map(transaction => {
-                    return transaction._id === action.payload._id ? 
-                    action.payload : transaction
-                })
-                state.transactions = state.transactions.sort((a, b) => 
-                    new Date(b.updatedAt) - new Date(a.updatedAt)
-                )
-            })
-            .addCase(updateTransaction.rejected, (state, action) => {
                 state.isLoading = false
                 state.isError = true
                 state.message = action.payload
