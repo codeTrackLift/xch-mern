@@ -3,27 +3,27 @@ import { useSelector, useDispatch } from 'react-redux'
 import { createTransaction } from '../features/transactions/transactionSlice'
 
 function TransactionForm() {
-    const [text, setText] = useState('')
+    const [value, setValue] = useState('')
 
     const dispatch = useDispatch()
 
     const onSubmit = (e) => {
         e.preventDefault()
-        dispatch(createTransaction({ text }))
-        setText('')
+        dispatch(createTransaction({ value }))
+        setValue('')
     }
 
     return (
         <section className='form'>
             <form onSubmit={onSubmit}>
                 <div className='form-group'>
-                    <label htmlFor='text'>Transaction</label>
+                    <label htmlFor='value'>Transaction</label>
                     <input
-                        type='text'
-                        name='text'
-                        id='text'
-                        value={text}
-                        onChange={(e) => setText(e.target.value)}
+                        type='number'
+                        name='value'
+                        id='value'
+                        value={value}
+                        onChange={(e) => setValue(e.target.value)}
                     />
                 </div>
                 <div className="form-group">

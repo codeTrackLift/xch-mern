@@ -17,15 +17,15 @@ const saveButtonStyle = {
 }
 
 function TransactionItem({ transaction }) {
-    const [text, setText] = useState(transaction.text)
+    const [value, setValue] = useState(transaction.value)
     const [showEditForm, setShowEditForm] = useState(false)
 
     const dispatch = useDispatch()
 
     const onUpdateTransaction = () => {
-        if(text.trim() === '') return
+        if(value.trim() === '') return
 
-        dispatch(updateTransaction({ id: transaction._id, text}))
+        dispatch(updateTransaction({ id: transaction._id, value}))
     }
 
     const onDeleteTransaction = () => {
@@ -43,12 +43,12 @@ function TransactionItem({ transaction }) {
                 >
                     <div className='form-group'>
                         <input 
-                            type='text'
-                            name='text'
-                            id='text'
-                            placeholder='Enter transaction text'
-                            value={text}
-                            onChange={e => setText(e.target.value)}
+                            type='value'
+                            name='value'
+                            id='value'
+                            placeholder='Enter transaction value'
+                            value={value}
+                            onChange={e => setValue(e.target.value)}
                             style={{fontSize:'0.75rem',width:'90%'}}
                         />
                     </div>
@@ -70,9 +70,9 @@ function TransactionItem({ transaction }) {
                     </button>
                 </form>
             ) : (
-                <div className="transaction-text-wrapper">
+                <div className="transaction-value-wrapper">
                     <hr style={{marginInline:'1rem'}} />
-                    <p style={{color:'lime'}}>{transaction.text}</p>
+                    <p style={{color:'lime'}}>{transaction.value}</p>
                     <button 
                         className='transaction-edit icon' 
                         style={updateButtonStyle}

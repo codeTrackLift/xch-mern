@@ -7,7 +7,7 @@ const transactionSchema = mongoose.Schema(
             required: true,
             ref: 'User',
         },
-        text: {
+        value: {
             type: Number,
             required: [true, 'Please enter a value'],
         },

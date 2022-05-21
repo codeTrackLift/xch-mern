@@ -16,13 +16,13 @@ const getTransactions = asyncHandler(async (req, res) => {
 // @route   POST /api/transactions
 // @access  Private
 const setTransaction = asyncHandler(async (req, res) => {
-    if (!req.body.text) {
+    if (!req.body.value) {
         res.status(400)
-        throw new Error('Please add a text field')
+        throw new Error('Please add a value field')
     }
 
     const transaction = await Transaction.create({
-        text: req.body.text,
+        value: req.body.value,
         user: req.user.id,
     })
 
@@ -33,9 +33,9 @@ const setTransaction = asyncHandler(async (req, res) => {
 // @route   PUT /api/transactions/:id
 // @access  Private
 const updateTransaction = asyncHandler(async (req, res) => {
-    if(!req.body.text) {
+    if(!req.body.value) {
         res.status(400)
-        throw new Error('Please add a text field')
+        throw new Error('Please add a value field')
     }
 
     // Check for transaction

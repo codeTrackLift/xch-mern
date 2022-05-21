@@ -6,6 +6,7 @@ import TransactionItem from '../components/TransactionItem'
 import Spinner from '../components/Spinner'
 import { getTransactions, reset } from '../features/transactions/transactionSlice'
 import capitalize from '../utils/capitalize'
+import Balance from '../components/Balance'
 
 function Dashboard() {
     const navigate = useNavigate()
@@ -40,6 +41,7 @@ function Dashboard() {
         <section className="heading">
             <h1><span style={{color:'silver'}}>Welcome</span> {user && capitalize(user.name)}</h1>
             <p>Transactions Dashboard</p>
+            <Balance />
         </section>
 
         <TransactionForm />

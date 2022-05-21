@@ -54,7 +54,7 @@ export const updateTransaction = createAsyncThunk(
         try {
             const token = thunkAPI.getState().auth.user.token
             return await transactionService.updateTransaction( 
-                transactionData.id, { text: transactionData.text }, token
+                transactionData.id, { value: transactionData.value }, token
             )
         } catch(error) {
             const message = 
