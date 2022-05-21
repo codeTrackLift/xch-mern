@@ -1,4 +1,4 @@
-# <img src='./frontend/public/favicon.ico' alt='MIT xPro logo' width='30'> **MIT xCHANGE** | BadBank Capstone Project <img src='https://codetracklift.github.io/codeTrackLift/logos/mitxPro_logoStacked.jpg' alt='MIT xPro logo' width='30'>
+<!-- # <img src='./frontend/public/favicon.ico' alt='MIT xPro logo' width='30'> **MIT xCHANGE** | BadBank Capstone Project <img src='https://codetracklift.github.io/codeTrackLift/logos/mitxPro_logoStacked.jpg' alt='MIT xPro logo' width='30'> -->
 
 ## About
 
