@@ -4,8 +4,8 @@ import { useSelector, useDispatch } from 'react-redux'
 import TransactionForm from '../components/TransactionForm'
 import TransactionItem from '../components/TransactionItem'
 import Spinner from '../components/Spinner'
-import { getTransactions, reset } from '../features/transactions/transactionSlice'
-import { deleteUser } from '../features/auth/authSlice'
+import { getTransactions } from '../features/transactions/transactionSlice'
+import { deleteUser, logout, reset } from '../features/auth/authSlice'
 import capitalize from '../utils/capitalize'
 import Balance from '../components/Balance'
 
@@ -36,6 +36,9 @@ function Dashboard() {
 
     const onDeleteUser = () => {
         dispatch(deleteUser(user._id))
+        dispatch(logout())
+        dispatch(reset())
+        navigate('/')
     }
 
     if (isLoading) {
@@ -46,9 +49,9 @@ function Dashboard() {
         <section className="heading">
             <h1><span style={{color:'silver'}}>Welcome</span> {user && capitalize(user.name)}</h1>
             <p>Transactions Dashboard</p>
-            {user && <div>
+            {user ? (<div>
                 <Balance />
-            </div>}
+            </div>) : null}
             <button onClick={onDeleteUser}>Delete User</button>
         </section>
 
