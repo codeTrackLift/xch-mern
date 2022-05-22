@@ -71,6 +71,7 @@ export const UserData = () => {
         dispatch(deleteUser(user._id))
         dispatch(logout())
         dispatch(reset())
+        window.location.reload(false)
     }
 
     if (isLoading) {

@@ -6,7 +6,7 @@ import { Card, Row } from 'react-bootstrap';
 
 import { createTransaction } from '../../features/transactions/transactionSlice'
 import balance from '../helpers/balance'
-import localeString from '../helpers/localeString'
+import { balanceNumber } from '../helpers/balance';
 
 const articleStyle = {
     margin: '0 auto',
@@ -30,29 +30,21 @@ const cardStyle ={
     boxShadow: 'rgba(0, 0, 0, 0.3) 0px 19px 38px, rgba(0, 0, 0, 0.22) 0px 15px 12px',
 }
 
-const errorStyle = {
-    color: 'red'
-}
-
-const textAreaStyle = {
-    resize: 'none',
-}
-
 export const Transaction = ({type}) => {
     const [value, setValue] = useState('')
     const [withdraw, setWithdraw] = useState('')
     const [overdraft, setOverdraft] = useState(false)
     const { user } = useSelector((state) => state.auth)
-    const { transactions, isError, message } = useSelector((state) => state.transactions)
+    const { transactions } = useSelector((state) => state.transactions)
 
     const account = user._id.replace(/\D/g,'').substring(0,8);
-    const [currentBalance, setCurrentBalance] = useState(localeString(balance({user, transactions})))
+    const [currentBalance, setCurrentBalance] = useState(balance({user, transactions}))
     const dispatch = useDispatch()
 
     useEffect(() => {
         setCurrentBalance(balance({user, transactions}))
 
-        if(type === 'Withdraw' && (currentBalance - Number(value) < 0)) {
+        if(type === 'Withdraw' && balanceNumber({user, transactions}) - Number(value) < 0) {
             setOverdraft(true)
         } else {
             setOverdraft(false)
@@ -105,7 +97,7 @@ export const Transaction = ({type}) => {
                             ) : ( 
                                 <span>Account Balance: </span>
                             )} <br/>
-                            ${localeString(currentBalance)}
+                            ${currentBalance}
                         </div>
                         </h5>
                     </div>
