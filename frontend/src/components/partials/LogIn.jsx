@@ -2,9 +2,8 @@ import { useState, useEffect } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 import { toast } from 'react-toastify'
 
-import Spinner from '../Spinner'
+import Spinner from './Spinner'
 import { login, reset } from '../../features/auth/authSlice'
-import { LogInCard } from './AccountCards';
 import { capitalize } from '../helpers/capitalize';
 
 export const LogIn = () => {
@@ -21,7 +20,7 @@ export const LogIn = () => {
 
     useEffect(() => {
         if(isError) {
-            toast.error(message)
+            console.log(message);
         }
 
         if(isSuccess || user) {

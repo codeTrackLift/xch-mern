@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 import { toast } from 'react-toastify'
-import Spinner from '../Spinner'
+import Spinner from './Spinner'
 
 import { register, reset } from '../../features/auth/authSlice'
 import { capitalize } from '../helpers/capitalize'

@@ -33,7 +33,7 @@ export const CurrentUser = ({setTitle}) => {
                                 as={NavLink}
                                 onClick={() => {setTitle('Account | MIT xCHANGE Bank')}}
                             >
-                                <Button style={buttonStyle}>Login</Button>
+                                <Button style={buttonStyle}>Log In</Button>
                             </Nav.Link>
                         </div>
                     )
