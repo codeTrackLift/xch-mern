@@ -3,13 +3,10 @@ import { useSelector, useDispatch } from 'react-redux'
 import { toast } from 'react-toastify'
 import { createTransaction } from '../../features/transactions/transactionSlice'
 
-import { useFormik} from 'formik';
-import { Card, Row, Toast } from 'react-bootstrap';
+import { Card, Row } from 'react-bootstrap';
 
-import Balance from './Balance'
 import balance from '../helpers/balance'
-import { newDate } from '../helpers/dateTime';
-import { capitalize } from '../helpers/capitalize';
+import localeString from '../helpers/localeString'
 
 const articleStyle = {
     margin: '0 auto',
@@ -108,7 +105,7 @@ export const Transaction = ({type}) => {
                             ) : ( 
                                 <span>Account Balance: </span>
                             )} <br/>
-                            ${currentBalance}
+                            ${localeString(currentBalance)}
                         </div>
                         </h5>
                     </div>
@@ -121,6 +118,7 @@ export const Transaction = ({type}) => {
                                 type='number'
                                 name='value'
                                 id='value'
+                                step='0.01'
                                 min={0}
                                 value={value}
                                 onChange={onChange}
