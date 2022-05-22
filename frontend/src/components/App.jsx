@@ -1,6 +1,7 @@
 import { useContext, useEffect, useState } from 'react'
 import { Routes, Route, useLocation, useNavigate } from "react-router-dom";
 import { useSelector, useDispatch } from 'react-redux'
+import { ToastContainer } from 'react-toastify'
 
 import { MyNavbar } from './MyNavbar';
 import { Header } from './Header';
@@ -32,6 +33,8 @@ export const App = () => {
 
     return (
         <div>
+            <ToastContainer />
+            
             <MyNavbar />
 
             <Header 

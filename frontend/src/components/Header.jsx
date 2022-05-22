@@ -1,6 +1,5 @@
 import { useLocation } from 'react-router-dom';
 import { Row } from 'react-bootstrap';
-import { ToastContainer } from 'react-toastify'
 
 import { Exchange } from './Exchange';
 import { CurrentUser } from './partials/CurrentUser';
@@ -170,7 +169,7 @@ export const Header = ({setTitle}) => {
                 pathname !== '/account/' && 
                 <CurrentUser setTitle={setTitle}/>
             }
-            <ToastContainer />
+            
         </header>
     );
 }

@@ -22,3 +22,7 @@
     background-color: #990033 !important;
     color: white !important;
 }
+
+input::placeholder {
+    color: silver !important;
+}

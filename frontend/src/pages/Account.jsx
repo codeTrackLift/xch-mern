@@ -6,7 +6,6 @@ import { CurrentUser } from '../components/partials/CurrentUser';
 import { Create } from '../components/partials/Create';
 import { LogIn } from '../components/partials/LogIn';
 import { GuestLogIn } from '../components/partials/GuestLogIn';
-import { capitalize } from '../components/helpers/capitalize';
 
 import cartoonMoney from '../images/cartoonMoney.png';
 
@@ -45,10 +44,6 @@ export const CreateAccount = () => {
     }
     setTimeout(clearHomeActive, 50);
 
-    const logOut = () => {
-     
-    } 
-
     return (
         <section style={sectionStyle}>
             
@@ -64,12 +59,6 @@ export const CreateAccount = () => {
                 <img src={cartoonMoney} alt='cartoon money' style={moneyStyle} className='imgHover' />
                 <p className='text-end'>This means you, Mom and Dad!</p>
             </div>
-
-            { !user ? (
-                <GuestLogIn />
-            ) : (
-                null
-            )}
 
             <Create />
 

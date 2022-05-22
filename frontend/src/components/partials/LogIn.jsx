@@ -1,93 +1,127 @@
-import { useFormik} from 'formik';
-import { LogInCard } from './AccountCards';
+import { useState, useEffect } from 'react'
+import { useSelector, useDispatch } from 'react-redux'
+import { toast } from 'react-toastify'
 
+import Spinner from '../Spinner'
+import { login, reset } from '../../features/auth/authSlice'
+import { LogInCard } from './AccountCards';
 import { capitalize } from '../helpers/capitalize';
 
-const errorStyle = {
-    color: 'red'
-}
+export const LogIn = () => {
+    const [formData, setFormData] = useState({
+        email: '',
+        password: '',
+    })
 
-export const LogIn = ({setUser, ctx}) => {
+    const { email, password } = formData
 
-    const validate = values => {
-        let errors = {};
-        if (!values.emailLogIn) {
-            errors.email = 'is required*';
-        } else if (!/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i
-            .test(values.emailLogIn)) {
-            errors.email = 'address is invalid*';
+    const dispatch = useDispatch()
+
+    const { user, isLoading, isError, isSuccess, message } = useSelector((state) => state.auth)
+
+    useEffect(() => {
+        if(isError) {
+            toast.error(message)
         }
-        if (!getUser(values.emailLogIn)) {
-            errors.email = 'address not found*';
+
+        if(isSuccess || user) {
+
         }
-        if(!values.pswLogIn) {
-            errors.password = 'is required*';
-        } 
-        return errors;
+
+        dispatch(reset())
+
+    }, [user, isError, isSuccess, message, dispatch])
+
+    const onChange = (e) => {
+        setFormData((prevState) => ({
+            ...prevState,
+            [e.target.name]: e.target.value,
+        }))
     }
 
-    const getUser = (email) => {
-        return ctx.users.find(user => user.email === email);
+    const onBlur = (e) => {
+        if (!/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i
+        .test(email)) {
+            toast.error('Invalid email address')
+            return
+        }
     }
 
-    const formik = useFormik({
-        initialValues: {
-            emailLogIn: '',
-            pswLogIn: ''
-        },
-        validate,
-        onSubmit: (values, {resetForm}) => {
-            const userLogIn = getUser(values.emailLogIn);
-            const userName = capitalize(userLogIn.name);
-            if (userLogIn.password === values.pswLogIn) {
-                alert(`LOGGING IN\n\nWelcome back, ${userName}.\n\nAccount ${userLogIn.id} has been successfully loaded.  Your current balance is $${userLogIn.balance.toLocaleString(undefined, {'minimumFractionDigits':2,'maximumFractionDigits':2})}`);
-                setUser(`${userName}, Account Number: ${userLogIn.id}`);
-                resetForm();
-                return;
-            }
-            alert(`Invalid password.`);
-        }, 
-    });
+    const onSubmit = (e) => {
+        e.preventDefault()
+
+        const userData = {
+            email,
+            password,
+        }
+
+        dispatch(login(userData))
+    }
+
+    if(isLoading) {
+        return <Spinner />
+    }
+
+    const accountCardStyle = {
+        margin: '3rem auto',
+        width: '20rem',
+        maxWidth: '90vw',
+        border: '1px solid black',
+        borderRadius: '2px',
+        boxShadow: 'rgba(0, 0, 0, 0.3) 0px 19px 38px, rgba(0, 0, 0, 0.22) 0px 15px 12px',
+    }
+
+    const cardHeaderStyle = {
+        margin: '-0.05rem -0.05rem 0 -0.05rem',
+        backgroundColor: 'rgb(50,50,50)',
+        color: 'white',
+        textShadow: '1px 1px 1px black',
+        fontVariant: 'small-caps',
+    }
 
     return (
-        <LogInCard 
-            header={'Have an account?'}
-            body={<form>
-                <div>Email {formik.touched.emailLogIn && formik.errors.email ? (
-                    <span id='emailErrorLogIn' style={errorStyle}>{formik.errors.email}</span>
-                    ) : null}
-                </div>
-                <input 
-                    id='emailLogIn' 
-                    type='email' 
-                    onChange={formik.handleChange} 
-                    onBlur={formik.handleBlur}
-                    value={formik.values.emailLogIn}
-                    className='w-100'
-                />
-                <div>Password {formik.touched.pswLogIn && formik.errors.password ? (
-                    <span id='pswErrorLogIn' style={errorStyle}>{formik.errors.password}</span> 
-                    ): null}</div>
-                <input 
-                    id='pswLogIn' 
-                    type='password' 
-                    onChange={formik.handleChange} 
-                    onBlur={formik.handleBlur}
-                    value={formik.values.pswLogIn}
-                    className='w-100'
-                />
-                <br/>
-                <button 
-                    id='logInButton'
-                    type='submit' 
-                    className='btn btn-light mt-4' 
-                    onClick={formik.handleSubmit}
-                    disabled={
-                        !formik.values.emailLogIn &&
-                        !formik.values.pswLogIn
-                    }
-                >Log In</button>
-            </form>}
-        />
+        <div className='card' style={accountCardStyle}>
+        <div className='card-header text-center' style={cardHeaderStyle}>
+            Log In Form
+        </div>
+            <section className='form'>
+                <form onSubmit={onSubmit}>
+                    <div className="form-group">
+                        <label htmlFor='email' className='fw-bold mx-3 mt-2'>Email</label>
+                        <input 
+                            type="email" 
+                            className="form-control mx-auto" 
+                            // id='email' 
+                            name='email' 
+                            value={email} 
+                            placeholder='Enter your email' 
+                            onChange={onChange} 
+                            onBlur={onBlur}
+                            style={{width:'95%'}}
+                        />
+                    </div>
+                    <div className="form-group">
+                        <label htmlFor='password' className='fw-bold mx-3 mt-2'>Password</label>
+                        <input 
+                            type="password" 
+                            className="form-control mx-auto" 
+                            // id='password' 
+                            name='password' 
+                            value={password} 
+                            placeholder='Enter your password' 
+                            onChange={onChange} 
+                            style={{width:'95%'}}
+                        />
+                    </div>
+                    <div className="form-group text-center">
+                        <button id='logInButton' type="submit" className='my-3 btn btn-block' disabled={
+                            !email || !password || isError
+                        }>
+                            Log In
+                        </button>
+                    </div>
+                </form>
+            </section>
+        </div>
     )
 }

@@ -11,7 +11,6 @@ import { store } from './app/store';
 import { App } from './components/App';
 
 import './styles/global.css'
-// import './styles/index.css'
 import './styles/typography.css'
 
 const container = document.getElementById('root');
