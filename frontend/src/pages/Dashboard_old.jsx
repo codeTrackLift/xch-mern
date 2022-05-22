@@ -3,11 +3,11 @@ import { useNavigate } from 'react-router-dom'
 import { useSelector, useDispatch } from 'react-redux'
 import TransactionForm from '../components/TransactionForm'
 import TransactionItem from '../components/TransactionItem'
-import Spinner from '../components/Spinner'
+import Spinner from '../components/partials/Spinner'
 import { getTransactions } from '../features/transactions/transactionSlice'
 import { deleteUser, logout, reset } from '../features/auth/authSlice'
 import capitalize from '../utils/capitalize'
-import Balance from '../components/Balance'
+import Balance from '../components/partials/Balance_old'
 
 function Dashboard() {
     const navigate = useNavigate()

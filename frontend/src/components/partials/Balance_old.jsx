@@ -10,11 +10,11 @@ function Balance () {
         balance += Number(transaction.value);
     })
 
-    const account = user._id.replace(/\D/g,'').substring(0,8);
+    // const account = user._id.replace(/\D/g,'').substring(0,8);
 
     return (
         <div className='text-center'>
-            Account: {account} <hr/>
+            {/* Account: {account} <hr/> */}
             Balance: ${balance}
         </div>
     )

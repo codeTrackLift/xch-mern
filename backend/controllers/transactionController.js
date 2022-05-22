@@ -21,6 +21,11 @@ const setTransaction = asyncHandler(async (req, res) => {
         throw new Error('Please add a value field')
     }
 
+    if (isNaN(req.body.value)) {
+        res.status(400)
+        throw new Error('Value field must be a number')
+    }
+
     const transaction = await Transaction.create({
         value: req.body.value,
         user: req.user.id,
