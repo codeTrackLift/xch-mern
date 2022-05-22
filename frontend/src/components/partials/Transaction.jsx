@@ -65,15 +65,17 @@ export const Transaction = ({type}) => {
 
     const onChange = (e) => {
         setValue(e.target.value)
-        if(e.target.value <= 0) {
-            toast.error('Amount must be greater than 0')
+        if(type === 'Withdraw') {
+            setWithdraw(-Number(e.target.value))
         }
     }
     
     const onBlur = (e) => {
-        // setWithdraw(e.target.value)
         if(isNaN(value)) {
             toast.error('Amount must be a number')
+        }
+        if(e.target.value <= 0) {
+            toast.error('Amount must be greater than 0')
         }
     }
 
@@ -85,8 +87,7 @@ export const Transaction = ({type}) => {
 
     const onWithdraw = (e) => {
         e.preventDefault()
-        setWithdraw(-Number(value))
-        console.log(value, typeof value)
+        let value = withdraw
         dispatch(createTransaction({ value }))
         setValue('')
     }
