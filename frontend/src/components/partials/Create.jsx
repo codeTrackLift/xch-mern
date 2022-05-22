@@ -159,7 +159,7 @@ export const Create = () => {
                         </div>
                         { password.length >= 8 ? (
                             <div className="form-group">
-                            <label htmlFor='password2' className='fw-bold mx-3 mt-2'>Confirm Password</label>
+                            <label htmlFor='password2' className='fw-bold mx-3 mt-2 mitMaroon'>Confirm Password</label>
                                 <input 
                                     type="password" 
                                     className="form-control mx-auto" 

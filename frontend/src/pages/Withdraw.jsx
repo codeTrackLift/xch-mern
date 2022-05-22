@@ -1,6 +1,6 @@
 import React from 'react'
 import { Card, Row } from 'react-bootstrap'
-import { useSelector, useDispatch } from 'react-redux'
+import { useSelector } from 'react-redux'
 
 import { Transaction } from '../components/partials/Transaction';
 import { initScrollMagicTransaction } from '../components/helpers/scrollMagic';
@@ -64,9 +64,9 @@ export const Withdraw = () => {
             ) : (
                 <Card style={cardStyle}>
                     <Card.Header className='text-center' style={cardHeaderStyle}>
-                        <h5>Unauthorized User</h5>
+                        <h5>Make a Withdrawal</h5>
                     </Card.Header>
-                    <h5 className='my-3 text-center'>Please log in make a transaction</h5>
+                    <h5 className='my-3 text-center'><b className='px-1 mitMaroon'>Unauthorized User: </b>Please log in make a transaction</h5>
                 </Card>
             )}
 

@@ -1,6 +1,6 @@
 import React from 'react'
 import { useLocation } from 'react-router-dom';
-import { useSelector, useDispatch } from 'react-redux'
+import { useSelector } from 'react-redux'
 
 import { CurrentUser } from '../components/partials/CurrentUser';
 import { Create } from '../components/partials/Create';

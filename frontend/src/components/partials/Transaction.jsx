@@ -1,10 +1,10 @@
 import { useEffect, useState } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 import { toast } from 'react-toastify'
-import { createTransaction } from '../../features/transactions/transactionSlice'
-
 import { Card, Row } from 'react-bootstrap';
 
+
+import { createTransaction } from '../../features/transactions/transactionSlice'
 import balance from '../helpers/balance'
 import localeString from '../helpers/localeString'
 
@@ -46,7 +46,7 @@ export const Transaction = ({type}) => {
     const { transactions, isError, message } = useSelector((state) => state.transactions)
 
     const account = user._id.replace(/\D/g,'').substring(0,8);
-    const [currentBalance, setCurrentBalance] = useState(balance({user, transactions}))
+    const [currentBalance, setCurrentBalance] = useState(localeString(balance({user, transactions})))
     const dispatch = useDispatch()
 
     useEffect(() => {

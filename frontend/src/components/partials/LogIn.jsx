@@ -4,7 +4,6 @@ import { toast } from 'react-toastify'
 
 import Spinner from './Spinner'
 import { login, reset } from '../../features/auth/authSlice'
-import { capitalize } from '../helpers/capitalize';
 
 export const LogIn = () => {
     const [formData, setFormData] = useState({

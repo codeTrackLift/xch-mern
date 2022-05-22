@@ -1,6 +1,6 @@
-import { useContext, useEffect, useState } from 'react'
-import { Routes, Route, useLocation, useNavigate } from "react-router-dom";
-import { useSelector, useDispatch } from 'react-redux'
+import { useEffect, useState } from 'react'
+import { Routes, Route, useLocation } from "react-router-dom";
+import { useSelector } from 'react-redux'
 import { ToastContainer } from 'react-toastify'
 
 import { MyNavbar } from './MyNavbar';
@@ -13,8 +13,6 @@ import { UserData } from '../pages/UserData';
 import { Footer } from './Footer';
 
 export const App = () => {
-    const navigate = useNavigate()
-    const dispatch = useDispatch()
     const { user } = useSelector((state) => state.auth)
     
     const [title, setTitle] = useState('Home | MIT xCHANGE Bank');

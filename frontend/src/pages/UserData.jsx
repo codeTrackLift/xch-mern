@@ -1,15 +1,12 @@
 import { useEffect } from 'react'
-import { Button, Card, Row } from 'react-bootstrap';
+import { Card, Row } from 'react-bootstrap';
 import { useSelector, useDispatch } from 'react-redux'
-import TransactionForm from '../components/TransactionForm'
-import TransactionItem from '../components/TransactionItem'
+import TransactionItem from '../components/partials/TransactionItem'
 import Spinner from '../components/partials/Spinner'
 import { getTransactions } from '../features/transactions/transactionSlice'
 import { deleteUser, logout, reset } from '../features/auth/authSlice'
 import account from '../components/helpers/account'
 import balance from '../components/helpers/balance'
-import localeString from '../components/helpers/localeString'
-
 
 import { capitalize } from '../components/helpers/capitalize';
 
@@ -34,6 +31,7 @@ const cardHeaderStyle = {
     margin: '0rem -0.55rem',
     color: 'white',
     textShadow: '1px 1px 1px black',
+    fontVariant: 'small-caps',
 }
 
 const cardStyle ={
@@ -102,10 +100,16 @@ export const UserData = () => {
                                 <h5>Account: <span className='fs-5 fw-normal'>{account({user})}</span></h5>
                             </div>
                             <div className='col-sm-6 mt-2'>
-                                <h5>Balance: $<span className='fs-5 fw-normal'>{localeString(balance({user, transactions}))}</span></h5>
+                                <h5>Balance: $<span className='fs-5 fw-normal'>{
+                                String(balance({user, transactions})).includes('-0') ? '0.00' :
+                                balance({user, transactions})
+                                }</span></h5>
                             </div>
                         </Row>
-                        <button onClick={onDeleteUser} id='transactionButton'>Delete User</button> 
+                        <div className='text-center'>
+                            <button className='btn mt-4' onClick={onDeleteUser} id='transactionButton' style={deleteStyle}>Delete User</button> 
+                            <p>Cannot undo!</p>
+                        </div>
                         <hr />
                         { transactions.length > 0 ? (
                             <div className='transactions'>
@@ -121,9 +125,9 @@ export const UserData = () => {
             ) : (
                 <Card style={cardStyle}>
                     <Card.Header className='text-center' style={cardHeaderStyle}>
-                        <h5>Unauthorized User</h5>
+                        <h5>View User Data</h5>
                     </Card.Header>
-                    <h5 className='my-3 text-center'>Please log in to view user data</h5>
+                    <h5 className='my-3 text-center'><b className='px-1 mitMaroon'>Unauthorized User:</b> Please log in to view user data.</h5>
                 </Card>
             )}
 
