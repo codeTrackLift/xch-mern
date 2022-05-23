@@ -19,7 +19,19 @@ export const App = () => {
 
     const ScrollToTop = () => {
         const { pathname } = useLocation();
+       
         useEffect(() => {
+            if(pathname.includes('/account')) {
+                return
+            }
+
+            if(pathname.includes('/deposit') ||
+                pathname.includes('/withdraw') ||
+                pathname.includes('/userdata')) {
+                window.scrollTo(0, 650);
+                return
+            }
+
             window.scrollTo(0, 0);
         }, [pathname]);
         return null;

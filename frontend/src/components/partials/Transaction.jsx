@@ -6,6 +6,8 @@ import { Card, Row } from 'react-bootstrap';
 
 import { createTransaction } from '../../features/transactions/transactionSlice'
 import balance from '../helpers/balance'
+import account from '../helpers/account'
+import { capitalize } from '../helpers/capitalize'
 import { balanceNumber } from '../helpers/balance';
 
 const articleStyle = {
@@ -37,7 +39,6 @@ export const Transaction = ({type}) => {
     const { user } = useSelector((state) => state.auth)
     const { transactions } = useSelector((state) => state.transactions)
 
-    const account = user._id.replace(/\D/g,'').substring(0,8);
     const [currentBalance, setCurrentBalance] = useState(balance({user, transactions}))
     const dispatch = useDispatch()
 
@@ -50,34 +51,47 @@ export const Transaction = ({type}) => {
             setOverdraft(false)
         }
 
-    }, [user, transactions, value, withdraw])
+    }, [user, transactions, value, withdraw, currentBalance])
 
     const onChange = (e) => {
-        setValue(e.target.value)
+        setValue(+e.target.value)
         if(type === 'Withdraw') {
             setWithdraw(-Number(e.target.value))
         }
     }
     
     const onBlur = (e) => {
+        setValue(+e.target.value)
         if(isNaN(value)) {
             toast.error('Amount must be a number')
         }
         if(e.target.value <= 0) {
             toast.error('Amount must be greater than 0')
+            return
         }
+        
     }
 
     const onDeposit = (e) => {
         e.preventDefault()
+        if(e.target.value <= 0) {
+            toast.error('Amount must be greater than 0')
+            return
+        }
         dispatch(createTransaction({ value }))
+        toast.info('Deposit successful')
         setValue('')
     }
-
+    
     const onWithdraw = (e) => {
         e.preventDefault()
+        if(e.target.value <= 0) {
+            toast.error('Amount must be greater than 0')
+            return
+        }
         let value = withdraw
         dispatch(createTransaction({ value }))
+        toast.info('Withdraw successful')
         setValue('')
     }
 
@@ -85,13 +99,16 @@ export const Transaction = ({type}) => {
         <div style={articleStyle}>
             <Card className='form card' style={cardStyle}>
                 <Card.Header className='text-center' style={cardHeaderStyle}>
-                    <h5>Make a {type}</h5>
+                    <Row className='fs-5'>
+                        { user && <span className='col-sm-6'>User: {capitalize(user.name)}</span>}
+                        <span className='col-sm-6'>Make a {type}</span>
+                    </Row>
                 </Card.Header>
                 <Row>
                     <div className='col-sm-4 my-auto'>
                         <h5 className='mt-3'>
                         <div className='text-center'>
-                            Account: {account} <hr/>
+                            Account: {account({user})} <hr/>
                             { overdraft ? (
                                 <span style={{color:'red'}}>Insufficient Balance: </span> 
                             ) : ( 

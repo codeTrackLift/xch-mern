@@ -1,5 +1,5 @@
 function account ({user}) {
-    const account = user._id.replace(/\D/g,'').substring(0,8);
+    const account = user._id.replace(/\D/g,'');
     return account
 }
 
