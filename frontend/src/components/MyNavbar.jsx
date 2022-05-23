@@ -22,13 +22,8 @@ const PopoverStyle = {
     borderRadius: '2px',
 }
 
-export const MyNavbar = () => {
+export const MyNavbar = ({setTitle}) => {
     const [expanded, setExpanded] = useState(false);
-    const [title, setTitle] = useState('Home | MIT xCHANGE MERN');
-
-    useEffect(() => {
-        document.title = title;
-    }, [title]);
 
     return (
         <Navbar id='navbar'
@@ -61,7 +56,7 @@ export const MyNavbar = () => {
                     )}>
                         <Nav.Link eventKey={1} 
                             id='homeNavLink' 
-                            onClick={() => {setExpanded(false); setTitle('Home | MIT xCHANGE MERN')}} 
+                            onClick={() => {setExpanded(false); setTitle('Home | xCH MERN Bank')}} 
                             href='/' 
                             as={NavLink} 
                             to='/'
@@ -80,7 +75,7 @@ export const MyNavbar = () => {
                     )}>
                         <Nav.Link eventKey={2} 
                         id='accountNavLink' 
-                        onClick={() => {setExpanded(false); setTitle('Account | MIT xCHANGE MERN')}} 
+                        onClick={() => {setExpanded(false); setTitle('Account | xCH MERN Bank')}} 
                         href='/account/' 
                         as={NavLink} 
                         to='/account/'
@@ -98,7 +93,7 @@ export const MyNavbar = () => {
                     )}>
                             <Nav.Link eventKey={3} 
                             id='depositNavLink' 
-                            onClick={() => {setExpanded(false); setTitle('Deposit | MIT xCHANGE MERN')}}
+                            onClick={() => {setExpanded(false); setTitle('Deposit | xCH MERN Bank')}}
                             href='/deposit/' 
                             as={NavLink} 
                             to='/deposit/'
@@ -116,7 +111,7 @@ export const MyNavbar = () => {
                     )}>
                         <Nav.Link eventKey={4} 
                             id='withdrawNavLink' 
-                            onClick={() => {setExpanded(false); setTitle('Withdraw | MIT xCHANGE MERN')}}
+                            onClick={() => {setExpanded(false); setTitle('Withdraw | xCH MERN Bank')}}
                             href='/withdraw/' 
                             as={NavLink} 
                             to='/withdraw/'
@@ -135,7 +130,7 @@ export const MyNavbar = () => {
                     )}>
                             <Nav.Link eventKey={5} 
                             id='userDataNavLink' 
-                            onClick={() => {setExpanded(false); setTitle('User Data | MIT xCHANGE MERN')}}
+                            onClick={() => {setExpanded(false); setTitle('User Data | xCH MERN Bank')}}
                             href='/userdata/' 
                             as={NavLink} 
                             to='/userdata/'

@@ -111,7 +111,7 @@ export const Create = () => {
     return (       
         <div className='card' style={accountCardStyle}>
             <div className='card-header text-center' style={cardHeaderStyle}>
-                Registration Form
+                <h5 className='my-auto'>Registration Form</h5>
             </div>
 
             { showRegistration ? (

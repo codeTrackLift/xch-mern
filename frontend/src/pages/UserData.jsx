@@ -141,7 +141,7 @@ export const UserData = () => {
             ) : (
                 <Card style={cardStyle}>
                     <Card.Header className='text-center' style={cardHeaderStyle}>
-                        <h5>View User Data</h5>
+                        <h5 className='my-auto'>View User Data</h5>
                     </Card.Header>
                     <h5 className='my-3 text-center'><b className='px-1 mitMaroon'>Unauthorized User:</b> Please log in to view user data.</h5>
                 </Card>

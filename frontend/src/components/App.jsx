@@ -12,13 +12,13 @@ import { UserData } from '../pages/UserData';
 import { Footer } from './Footer';
 
 export const App = () => {
-    
-    const [title, setTitle] = useState('Home | MIT xCHANGE Bank');
+    const [title, setTitle] = useState('MIT xCHANGE | MERN Bank');
 
     const ScrollToTop = () => {
         const { pathname } = useLocation();
-       
+
         useEffect(() => {
+
             if(pathname.includes('/account')) {
                 return
             }
@@ -44,16 +44,14 @@ export const App = () => {
         <div>
             <ToastContainer />
             
-            <MyNavbar />
+            <MyNavbar setTitle={setTitle} />
 
-            <Header 
-                setTitle={setTitle}
-            />
+            <Header setTitle={setTitle} />
 
             <ScrollToTop />
 
             <Routes>
-                <Route path="/*" element={<Home />} />
+                <Route path="/*" element={<Home setTitle={setTitle} />} />
                 <Route path="/account" element={<CreateAccount />} />
                 <Route path="/deposit" element={<Deposit/>} />
                 <Route path="/withdraw" element={<Withdraw/>} />

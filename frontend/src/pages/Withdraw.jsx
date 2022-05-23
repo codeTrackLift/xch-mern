@@ -64,9 +64,9 @@ export const Withdraw = () => {
             ) : (
                 <Card style={cardStyle}>
                     <Card.Header className='text-center' style={cardHeaderStyle}>
-                        <h5>Make a Withdrawal</h5>
+                        <h5 className='my-auto'>Make a Withdrawal</h5>
                     </Card.Header>
-                    <h5 className='my-3 text-center'><b className='px-1 mitMaroon'>Unauthorized User: </b>Please log in make a transaction</h5>
+                    <h5 className='my-3 text-center'><b className='px-1 mitMaroon'>Unauthorized User: </b>Please log in to make a withdrawal.</h5>
                 </Card>
             )}
 

@@ -80,7 +80,7 @@ export const LogIn = () => {
     return (
         <div className='card' style={accountCardStyle}>
         <div className='card-header text-center' style={cardHeaderStyle}>
-            Log In Form
+            <h5 className='my-auto'>Log in Form</h5>
         </div>
             <section className='form'>
                 <form onSubmit={onSubmit}>

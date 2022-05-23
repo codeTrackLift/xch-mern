@@ -46,7 +46,7 @@ const qrxChangeStyle = {
     maxWidth: '10rem',
 }
 
-export const Home = () => {
+export const Home = ({setTitle}) => {
     
     setTimeout(initScrollMagicHome,50);
 
@@ -57,7 +57,11 @@ export const Home = () => {
                 <h5 className='text-start mt-4'>Create an <span className='fw-bolder textShadowWhite dropShadow'>xCHANGE</span> account today!</h5>
                 <img id='mobileEuro' src={mobileEuro} style={mobileStyle} className='img-fluid col-8' alt='Mobile banking with Euros'/>
                 <Nav.Link className='col-4 my-auto' to='/account/' href='/account/' as={NavLink}>
-                    <Button id='signUpButton' style={signUpButtonStyle}>Register</Button>
+                    <Button 
+                        id='signUpButton' 
+                        style={signUpButtonStyle}
+                        onClick={() => {setTitle('Account | xCH MERN Bank')}}
+                    >Register</Button>
                 </Nav.Link>
                 <div className='d-none d-md-none d-lg-block'>
                     <div className='row'>
