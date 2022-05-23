@@ -63,20 +63,23 @@ export const LogIn = () => {
     const onSubmit = (e) => {
         e.preventDefault()
 
-        if (forgotPw && password.length < 8) {
-            toast.error('Password must be at least 8 characters')
-            return
-        }
-        if (forgotPw && password !== password2) {
-            toast.error('Passwords do not match')
-        } 
-
         const userData = {
             email,
             password,
         }
 
         dispatch(login(userData))
+    }
+
+    const onBlurForgot = (e) => {
+        if (password && password.length < 8) {
+            toast.error('Password must be at least 8 characters')
+            return
+        }
+        if (password2 && password !== password2) {
+            toast.error('Passwords do not match')
+            return
+        } 
     }
 
     const onUpdatePw = (e) => {
@@ -157,7 +160,7 @@ export const LogIn = () => {
                                 value={email} 
                                 placeholder='Enter your email' 
                                 onChange={onChange} 
-                                onBlur={onBlur}
+                                onBlur={onBlurForgot}
                                 style={{width:'95%'}}
                             />
                         </div>
@@ -170,6 +173,7 @@ export const LogIn = () => {
                                 value={password} 
                                 placeholder='Enter your password' 
                                 onChange={onChange} 
+                                onBlur={onBlurForgot}
                                 style={{width:'95%'}}
                             />
                         </div>
@@ -183,6 +187,7 @@ export const LogIn = () => {
                                     value={password2} 
                                     placeholder='Confirm your password' 
                                     onChange={onChange} 
+                                    onBlur={onBlurForgot}
                                     style={{width:'95%'}}
                                 />
                             </div>
@@ -191,7 +196,7 @@ export const LogIn = () => {
                         )}
                         <div className="form-group text-center">
                             <button id='logInButton' type="submit" className='my-3 btn btn-block' disabled={
-                                !email || !password || isError
+                                !email || !password || isError || password.length < 8 || password !== password2
                             }>
                                 Update Password
                             </button>
