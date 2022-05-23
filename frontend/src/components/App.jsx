@@ -1,6 +1,5 @@
 import { useEffect, useState } from 'react'
 import { Routes, Route, useLocation } from "react-router-dom";
-import { useSelector } from 'react-redux'
 import { ToastContainer } from 'react-toastify'
 
 import { MyNavbar } from './MyNavbar';
@@ -13,7 +12,6 @@ import { UserData } from '../pages/UserData';
 import { Footer } from './Footer';
 
 export const App = () => {
-    const { user } = useSelector((state) => state.auth)
     
     const [title, setTitle] = useState('Home | MIT xCHANGE Bank');
 
@@ -33,6 +31,7 @@ export const App = () => {
             }
 
             window.scrollTo(0, 0);
+
         }, [pathname]);
         return null;
     }
@@ -55,27 +54,10 @@ export const App = () => {
 
             <Routes>
                 <Route path="/*" element={<Home />} />
-                <Route path="/account" 
-                        element={<CreateAccount 
-                        user={user}
-                        // setUser={setUser}
-                    />} 
-                />
-                <Route path="/deposit" 
-                        element={<Deposit
-                        user={user}
-                    />} 
-                />
-                <Route path="/withdraw" 
-                        element={<Withdraw
-                        user={user}
-                    />} 
-                />
-                <Route path="/userdata" 
-                        element={<UserData
-                        // setUser={setUser}
-                    />} 
-                 />
+                <Route path="/account" element={<CreateAccount />} />
+                <Route path="/deposit" element={<Deposit/>} />
+                <Route path="/withdraw" element={<Withdraw/>} />
+                <Route path="/userdata" element={<UserData/>} />
             </Routes>
             <Footer />
 

@@ -24,7 +24,7 @@ const PopoverStyle = {
 
 export const MyNavbar = () => {
     const [expanded, setExpanded] = useState(false);
-    const [title, setTitle] = useState('Home | MIT xCHANGE Bank');
+    const [title, setTitle] = useState('Home | MIT xCHANGE MERN');
 
     useEffect(() => {
         document.title = title;
@@ -55,12 +55,13 @@ export const MyNavbar = () => {
                         trigger={['hover', 'click']}
                         overlay={(
                         <Popover style={PopoverStyle}>
-                            <h6 className='px-2'><span style={{fontVariant:'small-caps'}}>tooltip:</span><hr/><span className='fw-bolder'>MIT | xCHANGE</span> is the future of currency.  We have all the current currency <span className='fw-bolder'>xCHANGE</span> rates! (assuming we don't get a 404)</h6>
+                            <h6 className='px-2'><span style={{fontVariant:'small-caps'}}>tooltip:</span><hr/><span className='fw-bolder'>MIT | xCHANGE</span> is the future of currency.  We have all the current currency <span className='fw-bolder'>xCHANGE</span> rates! (assuming we don't get a 404) 
+                            <br/><br/>Front-end was developed using React.js and Redux for state management.</h6>
                         </Popover>
                     )}>
                         <Nav.Link eventKey={1} 
                             id='homeNavLink' 
-                            onClick={() => {setExpanded(false); setTitle('Home | MIT xCHANGE Bank')}} 
+                            onClick={() => {setExpanded(false); setTitle('Home | MIT xCHANGE MERN')}} 
                             href='/' 
                             as={NavLink} 
                             to='/'
@@ -73,12 +74,13 @@ export const MyNavbar = () => {
                         trigger={['hover', 'click']}
                         overlay={(
                         <Popover style={PopoverStyle}>
-                            <h6 className='px-2'><span style={{fontVariant:'small-caps'}}>tooltip:</span><hr/>Register a new account, or log into an existing account.  Accounts include input validation, hashed acccount numbers, and a mock database!</h6>
+                            <h6 className='px-2'><span style={{fontVariant:'small-caps'}}>tooltip:</span><hr/>Register a new account, or log into an existing account. Accounts include input validation and toastify notifications!
+                            <br/><br/>Back-end was developed using MongoDB, Mongoose, Express.js, Node.js.</h6>
                         </Popover>
                     )}>
                         <Nav.Link eventKey={2} 
                         id='accountNavLink' 
-                        onClick={() => {setExpanded(false); setTitle('Account | MIT xCHANGE Bank')}} 
+                        onClick={() => {setExpanded(false); setTitle('Account | MIT xCHANGE MERN')}} 
                         href='/account/' 
                         as={NavLink} 
                         to='/account/'
@@ -91,12 +93,12 @@ export const MyNavbar = () => {
                         trigger={['hover', 'click']}
                         overlay={(
                         <Popover style={PopoverStyle}>
-                            <h6 className='px-2'><span style={{fontVariant:'small-caps'}}>tooltip:</span><hr/>We offer the electronic deposits with input validation and optional transaction notes.  Each successful transaction is accompanied by an updated balance and user notification.</h6>
+                            <h6 className='px-2'><span style={{fontVariant:'small-caps'}}>tooltip:</span><hr/>We offer electronic deposits with input validation and error handling.  Each successful transaction is accompanied by an updated balance and a toastify notification!</h6>
                         </Popover>
                     )}>
                             <Nav.Link eventKey={3} 
                             id='depositNavLink' 
-                            onClick={() => {setExpanded(false); setTitle('Deposit | MIT xCHANGE Bank')}}
+                            onClick={() => {setExpanded(false); setTitle('Deposit | MIT xCHANGE MERN')}}
                             href='/deposit/' 
                             as={NavLink} 
                             to='/deposit/'
@@ -109,12 +111,12 @@ export const MyNavbar = () => {
                         trigger={['hover', 'click']}
                         overlay={(
                         <Popover style={PopoverStyle}>
-                            <h6 className='px-2'><span style={{fontVariant:'small-caps'}}>tooltip:</span><hr/>We offer the electronic withdrawals with input validation and optional transaction notes.  Each successful transaction is accompanied by an updated balance and user notification. Complimentary overdraft protection is included with each new account!</h6>
+                            <h6 className='px-2'><span style={{fontVariant:'small-caps'}}>tooltip:</span><hr/>We offer electronic withdrawals with input validation and error handling. Complimentary overdraft protection is included with each new account!</h6>
                         </Popover>
                     )}>
                         <Nav.Link eventKey={4} 
                             id='withdrawNavLink' 
-                            onClick={() => {setExpanded(false); setTitle('Withdraw | MIT xCHANGE Bank')}}
+                            onClick={() => {setExpanded(false); setTitle('Withdraw | MIT xCHANGE MERN')}}
                             href='/withdraw/' 
                             as={NavLink} 
                             to='/withdraw/'
@@ -127,12 +129,13 @@ export const MyNavbar = () => {
                         trigger={['hover', 'click']}
                         overlay={(
                         <Popover style={PopoverStyle}>
-                            <h6 className='px-2'><span style={{fontVariant:'small-caps'}}>tooltip:</span><hr/>We support full data transparency.  Our local storage retains user names, emails, passwords, and all historical transactions.  User data will persist through a reload, but may be reset as desired.</h6>
+                            <h6 className='px-2'><span style={{fontVariant:'small-caps'}}>tooltip:</span><hr/>Review user data, transaction history, and delete user accounts.  
+                            <br/><br/>User data is retained in a MongoDB Atlas database and utilizes JSON Web Token authentication.</h6>
                         </Popover>
                     )}>
                             <Nav.Link eventKey={5} 
                             id='userDataNavLink' 
-                            onClick={() => {setExpanded(false); setTitle('User Data | MIT xCHANGE Bank')}}
+                            onClick={() => {setExpanded(false); setTitle('User Data | MIT xCHANGE MERN')}}
                             href='/userdata/' 
                             as={NavLink} 
                             to='/userdata/'

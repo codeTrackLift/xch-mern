@@ -2,8 +2,9 @@ import { useEffect, useState } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 import { toast } from 'react-toastify'
 import { Card, Row } from 'react-bootstrap';
+import Spinner from './Spinner'
 
-
+import { getTransactions } from '../../features/transactions/transactionSlice'
 import { createTransaction } from '../../features/transactions/transactionSlice'
 import balance from '../helpers/balance'
 import account from '../helpers/account'
@@ -37,7 +38,7 @@ export const Transaction = ({type}) => {
     const [withdraw, setWithdraw] = useState('')
     const [overdraft, setOverdraft] = useState(false)
     const { user } = useSelector((state) => state.auth)
-    const { transactions } = useSelector((state) => state.transactions)
+    const { transactions, isLoading } = useSelector((state) => state.transactions)
 
     const [currentBalance, setCurrentBalance] = useState(balance({user, transactions}))
     const dispatch = useDispatch()
@@ -51,12 +52,20 @@ export const Transaction = ({type}) => {
             setOverdraft(false)
         }
 
-    }, [user, transactions, value, withdraw, currentBalance])
+    }, [user, transactions, value, withdraw, currentBalance, type])
+
+    useEffect(() => {
+        dispatch(getTransactions())
+
+    }, [dispatch])
 
     const onChange = (e) => {
-        setValue(e.target.value.replace(/^0+/, '').replaceAll('-', ''))
+        setValue(e.target.value.replace(/^0+/, ''))
         if(type === 'Withdraw') {
             setWithdraw(-Number(e.target.value))
+        }
+        if(!e.target.value && e.target.value == 0) {
+            toast.error('Invalid amount')
         }
     }
     
@@ -67,7 +76,6 @@ export const Transaction = ({type}) => {
         }
         if(e.target.value && e.target.value <= 0) {
             toast.error('Amount must be greater than $0')
-            return
         }
         if(type === 'Deposit' && +e.target.value > 1000000) {
             toast.error('Exceeds maximum deposit amount of $1,000,000')
@@ -97,6 +105,10 @@ export const Transaction = ({type}) => {
         setValue('')
     }
 
+    if (isLoading) {
+        return <Spinner />
+    }
+
     return (
         <div style={articleStyle}>
             <Card className='form card' style={cardStyle}>
@@ -114,7 +126,7 @@ export const Transaction = ({type}) => {
                             { overdraft ? (
                                 <span style={{color:'red'}}>Insufficient Balance: </span> 
                             ) : ( 
-                                <span>Account Balance: </span>
+                                <span>Current Balance: </span>
                             )} <br/>
                             <span className='fs-6'>${currentBalance}</span>
                         </div>

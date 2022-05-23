@@ -1,4 +1,4 @@
-import { useEffect } from 'react'
+import { useEffect, useState } from 'react'
 import { Card, Row } from 'react-bootstrap';
 import { useSelector, useDispatch } from 'react-redux'
 import TransactionItem from '../components/partials/TransactionItem'
@@ -42,6 +42,7 @@ const cardStyle ={
 }
 
 export const UserData = () => {
+    const [confirmDelete, setConfirmDelete] = useState(false)
     const { user, isError, message } = useSelector((state) => state.auth)
     const { transactions, isLoading } = useSelector((state) => state.transactions)
     const dispatch = useDispatch()
@@ -74,6 +75,10 @@ export const UserData = () => {
         window.location.reload(false)
     }
 
+    const onConfirm = () => {
+        setConfirmDelete(true)
+    }
+
     if (isLoading) {
         return <Spinner />
     }
@@ -89,29 +94,39 @@ export const UserData = () => {
                 <Card style={cardStyle}>
                     <Card.Header style={cardHeaderStyle} className='row'>
                         <div className='col-sm-6 mt-2'>
-                            <h5>User Name: <span className='fs-5 fw-normal'>{capitalize(user.name)}</span></h5>
+                            <h5>User Name: <span className='fs-5 fw-normal' style={{fontVariant:'normal'}}>{capitalize(user.name)}</span></h5>
                         </div>
                         <div className='col-sm-6 mt-2'>
-                            <h5>Email: <span className='fs-5 fw-normal'>{user.email}</span></h5>
+                            <h5>Email: <span className='fs-5 fw-normal' style={{fontVariant:'normal'}}>{user.email}</span></h5>
                         </div>
                     </Card.Header>
                     <Card.Body>
                         <Row>
                             <div className='col-sm-6 mt-2'>
-                                <h5>Account: <span className='fs-5 fw-normal'>{account({user})}</span></h5>
+                                <h5>Account #: <span className='fs-6 fw-normal'>{account({user})}</span></h5>
                             </div>
                             <div className='col-sm-6 mt-2'>
-                                <h5>Balance: $<span className='fs-5 fw-normal'>{
+                                <h5>Current Balance: $<span className='fs-5 fw-normal'>{
                                 String(balance({user, transactions})).includes('-0') ? '0.00' :
                                 balance({user, transactions})
                                 }</span></h5>
                             </div>
                         </Row>
-                        <div className='text-center'>
-                            <button className='btn mt-4' onClick={onDeleteUser} id='transactionButton' style={deleteStyle}>Delete User</button> 
-                            <p>Cannot undo!</p>
-                        </div>
+                        { confirmDelete ? (
+                            <div className='text-center'>
+                                <button className='btn mt-4 mx-5' onClick={() => setConfirmDelete(false)} id='createButton' style={deleteStyle}>Cancel</button> 
+                                <button className='btn mt-4 mx-5' onClick={onDeleteUser} id='transactionButton' style={deleteStyle}>Confirm</button> 
+                                <p><span className='fw-bolder mitMaroon'>CONFIRM DELETE</span><br/>Deleting a user is permanent!</p>
+                            </div>
+                        ) : (
+                            <div className='text-center'>
+                                <button className='btn mt-4' onClick={onConfirm} id='transactionButton' style={deleteStyle}>Delete User</button> 
+                                <p>Cannot undo!</p>
+                            </div>
+                        )}
+                        
                         <hr />
+                        <h5 className='textGray text-center'>Transaction History (Newest to Oldest)</h5>
                         { transactions.length > 0 ? (
                             <div className='transactions'>
                                 {transactions.map((transaction) => {
