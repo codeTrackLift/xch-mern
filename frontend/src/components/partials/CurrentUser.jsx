@@ -10,7 +10,6 @@ const buttonStyle = {
 }
 
 export const CurrentUser = ({setTitle}) => {
-
     const dispatch = useDispatch()
     const { user } = useSelector((state) => state.auth)
 

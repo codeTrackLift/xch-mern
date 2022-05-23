@@ -23,7 +23,7 @@ export function balanceNumber ({user, transactions}) {
         return 0;
     }
 
-    return balance;
+    return localeString(Number(balance).toFixed(2));
 }
 
 export default balance

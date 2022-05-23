@@ -6,6 +6,7 @@ import Spinner from './Spinner'
 
 import { getTransactions } from '../../features/transactions/transactionSlice'
 import { createTransaction } from '../../features/transactions/transactionSlice'
+
 import balance from '../helpers/balance'
 import account from '../helpers/account'
 import { capitalize } from '../helpers/capitalize'
@@ -128,7 +129,7 @@ export const Transaction = ({type}) => {
                             ) : ( 
                                 <span>Current Balance: </span>
                             )} <br/>
-                            <span className='fs-6'>${currentBalance}</span>
+                            <span className='fs-6'>${currentBalance.replace('-', '')}</span>
                         </div>
                         </h5>
                     </div>
