@@ -13,6 +13,13 @@ const register = async (userData) => {
     return response.data
 }
 
+// Update password
+const updatePassword = async (userData) => {
+    const response = await axios.put(API_URL + 'password', userData)
+
+    return response.data
+}
+
 // Login user
 const login = async (userData) => {
     const response = await axios.post(API_URL + 'login', userData)
@@ -44,6 +51,7 @@ const deleteUser = async (userId, token) => {
 
 const authService = {
     register,
+    updatePassword,
     login,
     logout,
     deleteUser,

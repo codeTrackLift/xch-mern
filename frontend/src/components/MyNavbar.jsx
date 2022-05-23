@@ -69,7 +69,7 @@ export const MyNavbar = ({setTitle}) => {
                         trigger={['hover', 'click']}
                         overlay={(
                         <Popover style={PopoverStyle}>
-                            <h6 className='px-2'><span style={{fontVariant:'small-caps'}}>tooltip:</span><hr/>Register a new account, or log into an existing account. Accounts include input validation and toastify notifications!
+                            <h6 className='px-2'><span style={{fontVariant:'small-caps'}}>tooltip:</span><hr/>Register a new account, log into an existing account, or reset your password. Accounts include input validation and toastify notifications!
                             <br/><br/>Back-end was developed using MongoDB, Mongoose, Express.js, Node.js.</h6>
                         </Popover>
                     )}>

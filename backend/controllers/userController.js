@@ -49,6 +49,37 @@ const registerUser = asyncHandler(async (req, res) => {
     res.json({message: 'Register User'})
 })
 
+// @desc    Update user password
+// @route   PUT /api/users/:id
+// @access  Private
+const updatePassword = asyncHandler(async (req, res) => {
+    const { email, password } = req.body
+
+    if(!email || !password) {
+        res.status(400)
+        throw new Error ('Please enter all fields')
+    }
+
+    // Check if user exists
+    const userExists = await User.findOne({ email })
+
+    if(!userExists) {
+        res.status(400)
+        throw new Error ('Email does not exist')
+    }
+
+    // Hash password
+    const salt = await bcrypt.genSalt(10)
+    const hashedPassword = await bcrypt.hash(password, salt)
+
+    const updatedUser = await User.findOneAndUpdate(email, {password: hashedPassword}, {
+        new: true,
+    });
+
+
+    res.status(200).json(updatedUser)
+})
+
 // @desc    Authenticate a user
 // @route   POST /api/login
 // @access  Public
@@ -77,6 +108,7 @@ const loginUser = asyncHandler(async (req, res) => {
 const getMe = asyncHandler(async (req, res) => {    
         res.status(200).json(req.user)
 })
+
 
 // Generate token
 const generateToken = (id) => {
@@ -110,6 +142,7 @@ const deleteUser = asyncHandler(async (req, res) => {
 
 module.exports = {
     registerUser,
+    updatePassword,
     loginUser,
     getMe,
     deleteUser,
