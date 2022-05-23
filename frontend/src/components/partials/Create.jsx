@@ -114,7 +114,17 @@ export const Create = () => {
                 <h5 className='my-auto'>Registration Form</h5>
             </div>
 
-            { showRegistration ? (
+            { (!showRegistration && user) ? (
+                <div className='text-center'>
+                    <h5 className='mt-3 mx-3'>Your xCHANGE account has been successfully created</h5>
+                    <button 
+                        id='createAnotherButton'
+                        type='submit' 
+                        className='btn my-3' 
+                        onClick={()=>setShowRegistration(true)}
+                    >Add another account</button>
+                </div>
+            ) : (
                 <section className='form'>
                     <form onSubmit={onSubmit}>
                         <div className="form-group">
@@ -183,16 +193,6 @@ export const Create = () => {
                         </div>
                     </form>
                 </section>
-            ) : (
-                <div className='text-center'>
-                <h5 className='mt-3 mx-3'>Your xCHANGE account has been successfully created</h5>
-                <button 
-                    id='createAnotherButton'
-                    type='submit' 
-                    className='btn my-3' 
-                    onClick={()=>setShowRegistration(true)}
-                >Add another account</button>
-                </div>
             )}
         </div>
     )
