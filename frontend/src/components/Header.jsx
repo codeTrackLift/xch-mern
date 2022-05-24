@@ -6,7 +6,7 @@ import { Exchange } from './Exchange';
 import { CurrentUser } from './partials/CurrentUser';
 import { initScrollMagicHeader } from './helpers/scrollMagic';
 
-import xChange from '../images/xChange.gif';
+import xChange from '../images/xChangeMern.gif';
 import mit from '../images/mit.jpg';
 import bankIcon from '../images/bankIcon.png';
 import mobileBanking from '../images/mobileBanking.png';
@@ -24,8 +24,8 @@ const xChangeImgStyle = {
     paddingTop: '0.25rem',
     width: '40vw',
     maxWidth: '35rem',
-    WebkitFilter: 'drop-shadow(2px 2px 2px white)',
-    filter: 'drop-shadow(2px 2px 2px white)',
+    WebkitFilter: 'drop-shadow(1px 1px 1px dimgray)',
+    filter: 'drop-shadow(1px 1px 1px dimgray)',
 }
 
 const heroStyle = {
@@ -78,7 +78,7 @@ const h1Style = {
     color: 'black',
     fontSize: '2.5rem',
     fontWeight: 'bolder',
-    textShadow: '1px 1px 1px black',
+    // textShadow: '1px 1px 1px black',
     padding: '1.25rem 0.5rem 1.25rem 0',
     fontVariant: 'small-caps',
 }
@@ -126,7 +126,7 @@ export const Header = ({setTitle}) => {
 
             <div style={heroStyle}>
 
-                <h1 style={h1Style}>T<span style={{color:'#990033'}}>h</span>e <span className='dropShadow text-white'>Future</span> of <span className='dropShadow text-white'>Currency</span></h1>
+                <h1 style={h1Style}>T<span className='textShadow' style={{color:'#990033'}}>h</span>e <span className='dropShadow text-white'>Future</span> of <span className='dropShadow text-white'>Currency</span></h1>
 
                 <Row
                     className='mx-auto w-100 d-flex justify-content-center my-5'

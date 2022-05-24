@@ -55,7 +55,7 @@ export const Home = ({setTitle}) => {
         <section style={sectionStyle}>
 
             <div style={signUpStyle} className='row'>
-                <h5 className='text-start mt-4'><span className='fw-bolder textShadowWhite dropShadow px-1'><span style={{letterSpacing: '-0,5px'}}>M<span className='mitMaroon'>I</span>T</span> | xCHANGE</span> <i><FaLandmark /></i> has been upgraded...</h5>
+                <h5 className='text-start mt-4'><span className='fw-bolder textShadowWhite dropShadow'><span style={{letterSpacing: '-0,5px'}}>M<span className='mitMaroon'>I</span>T</span> | xCHANGE</span> <i className='px-1'><FaLandmark /></i> has been upgraded...</h5>
                 <h5 className='text-end mt-4'>Now with <i><FaUserCheck /></i> JSON Web Tokens and CRUD <i><FaCoins /></i> functionality!</h5>
                 <img id='mobileEuro' src={mobileEuro} style={mobileStyle} className='img-fluid col-8' alt='Mobile banking with Euros'/>
                 <Nav.Link className='col-4 my-auto' to='/account/' href='/account/' as={NavLink}>

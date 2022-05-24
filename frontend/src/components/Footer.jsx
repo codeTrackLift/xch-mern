@@ -1,7 +1,7 @@
 import React from 'react';
 import { FooterList } from './partials/FooterList';
 
-import xChange from '../images/xChange.gif';
+import xChange from '../images/xChangeMern.gif';
 import youtube from '../images/yt_logo_light.png'
 import gitHub from '../images/gitHubLogoBlack.png';
 import twitter from '../images/twitterLogoBlue.png';
@@ -24,6 +24,8 @@ const h4Style = {
 const xChangeStyle = {
     width: '20rem',
     maxWidth: '90vw',
+    WebkitFilter: 'drop-shadow(1px 1px 1px dimgray)',
+    filter: 'drop-shadow(1px 1px 1px dimgray)',
 }
 
 const securityStyle = {
