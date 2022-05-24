@@ -57,7 +57,7 @@ export const Create = () => {
             toast.error(message)
         }
         if(isSuccess && user) {
-            toast.info(`Welcome to the xCHANGE ${capitalize(user.name)}`)
+            toast.info(`Welcome to the xCHANGE, you are logged in as ${capitalize(user.name)}`)
         }
         dispatch(reset())
     }, [user, isError, isSuccess, message, dispatch])
@@ -187,7 +187,7 @@ export const Create = () => {
                         { password.length >= 8 ? (
                             <div className="form-group">
                             <label htmlFor='password2' className='fw-bold mx-3 mt-2 mitMaroon'>
-                                Confirm Password<span className='text-black fw-lighter fst-italic'>{ password !== password2 && ' must match'}</span>
+                                Confirm Password<span className='text-black fw-lighter fst-italic'>{ password2 && password !== password2 && ' must match'}</span>
                             </label>
                                 <div style={passWrap}>
                                     <input 
