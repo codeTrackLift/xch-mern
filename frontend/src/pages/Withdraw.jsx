@@ -1,6 +1,7 @@
 import React from 'react'
 import { Card, Row } from 'react-bootstrap'
 import { useSelector } from 'react-redux'
+import { FaRegCreditCard, FaRegMoneyBillAlt } from 'react-icons/fa'
 
 import { Transaction } from '../components/partials/Transaction';
 import { initScrollMagicTransaction } from '../components/helpers/scrollMagic';
@@ -56,7 +57,7 @@ export const Withdraw = () => {
         <section style={sectionStyle}>
             <Row style={articleStyle} className='text-center'>
                 <img id='transactionImage' className='col-6 img-fluid mx-auto dropShadow' src={cashAtm} alt='cash deposit' style={imageStyle}/>
-                <h2 id='transactionText' className='col-6 m-auto'>Withdraw</h2>
+                <h2 id='transactionText' className='col-6 m-auto'><i className='px-5'><FaRegCreditCard /></i>Withdraw<i className='px-5'><FaRegMoneyBillAlt /></i></h2>
             </Row>
             
             { user ? (

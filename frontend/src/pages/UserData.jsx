@@ -1,6 +1,8 @@
 import { useEffect, useState } from 'react'
 import { Card, Row } from 'react-bootstrap';
 import { useSelector, useDispatch } from 'react-redux'
+import { FaUserCheck, FaUserCog, FaUserShield } from 'react-icons/fa'
+
 import TransactionItem from '../components/partials/TransactionItem'
 import Spinner from '../components/partials/Spinner'
 import { getTransactions } from '../features/transactions/transactionSlice'
@@ -87,7 +89,8 @@ export const UserData = () => {
         <section style={sectionStyle}>
 
             <div style={greetingStyle} className='mb-5'>
-                <h5 className='text-center'><span className='fw-bolder textShadowWhite dropShadow px-1'><span style={{letterSpacing: '-0,5px'}}>M<span className='mitMaroon'>I</span>T</span> | xCHANGE</span> MERN Bank back-end was developed using MongoDB, Mongoose, Express.js, Node.js, and uses JSON Web Token authentication.</h5>  
+                <h2 className='text-center my-5'><i className='px-2'><FaUserCog /></i>User Data<i className='px-2'><FaUserShield /></i></h2>
+                <h5 className='text-center'><span className='fw-bolder textShadowWhite dropShadow px-1'><span style={{letterSpacing: '-0,5px'}}>M<span className='mitMaroon'>I</span>T</span> | xCHANGE</span> MERN Bank is secured with <i><FaUserCheck /></i> JSON Web Tokens.</h5>  
             </div>
 
             { user ? ( 

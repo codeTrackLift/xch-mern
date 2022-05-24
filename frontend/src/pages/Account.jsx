@@ -26,6 +26,7 @@ const moneyStyle = {
     width: '30%',
     maxWidth: '10rem',
     margin: '2rem auto -3rem 10vw',
+    opacity: '0.5',
 }
 
 export const CreateAccount = () => {
@@ -55,9 +56,9 @@ export const CreateAccount = () => {
             </div>
 
             <div style={articleStyle}>
-                <h4><span className='fw-bolder textShadowWhite dropShadow'><span style={{letterSpacing: '-0,5px'}}>M<span className='mitMaroon'>I</span>T</span> | xCHANGE</span> is for demo purposes only, <span id='doNot' className='mitMaroon'>DO NOT</span> use your real login credentials.</h4>
                 <img src={cartoonMoney} alt='cartoon money' style={moneyStyle} className='imgHover' />
 
+                <h4><span className='fw-bolder textShadowWhite dropShadow'><span style={{letterSpacing: '-0,5px'}}>M<span className='mitMaroon'>I</span>T</span> | xCHANGE</span> is for demo purposes only, <span id='doNot' className='mitMaroon'>DO NOT</span> use your real login credentials.</h4>
             </div>
 
             <Create />

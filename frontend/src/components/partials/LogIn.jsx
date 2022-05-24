@@ -100,19 +100,23 @@ export const LogIn = () => {
 
     const onUpdatePw = (e) => {
         e.preventDefault()
+
         const userData = {
             email,
             password,
         }
         dispatch(updatePassword(userData))
-        setFormData({
-            name: '',
-            email: '',
-            password: '',
-            password2: '',
-        })
-        setForgotPw(false)
-        toast.info('Password updated, please log in')
+
+        if(isSuccess) {
+            setFormData({
+                name: '',
+                email: '',
+                password: '',
+                password2: '',
+            })
+            setForgotPw(false)
+            toast.info('Password updated, please log in')
+        }
     }
 
     if(isLoading) {
@@ -124,7 +128,7 @@ export const LogIn = () => {
             { !forgotPw ? (
                 <>
                 <div className='card-header text-center' style={cardHeaderStyle}>
-                    <h5 className='my-auto'>Log in Form</h5>
+                    <h5 className='my-auto'>Existing User Login</h5>
                 </div>
                 <section className='form'>
                     <form onSubmit={onSubmit}>
