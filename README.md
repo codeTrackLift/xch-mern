@@ -1,8 +1,8 @@
-# <img src='./frontend/public/favicon.ico' alt='MIT xPro logo' width='30'> **MIT xCHANGE** | MERN Bank
+# <img src='./frontend/public/favicon.ico' alt='MIT xPro logo' width='30'> **MIT xCHANGE** | Full Stack MERN Bank
 
 <img src='./frontend/src/images/giphyStockTicker.gif' alt='MIT xCHANGE custom JavaScript stock ticker animated gif'>
 
- >***Demo:*** Full Stack Bank on Heroku [https://xch-mern.herokuapp.com/](https://xch-mern.herokuapp.com/)
+ >***Demo:*** Heroku Deployment [https://xch-mern.herokuapp.com/](https://xch-mern.herokuapp.com/)
 
 <img src='./frontend/src/images/mernStackTrans.png' alt='MongoDB, Express.js, React.js, Node.js MERN Stack' width='200'>
  
@@ -21,17 +21,25 @@
 
 ## About
 
-MIT xCHANGE MERN Bank was developed during coding bootcamp week 15. This was 'break week' between our front-end [BadBank](https://codetracklift.github.io/xchange/) project and the final trimester of the bootcamp where we cover back-end development.
+MIT xCHANGE Full Stack MERN Bank was developed during coding bootcamp week 15. This was 'break week' between our front-end [BadBank](https://codetracklift.github.io/xchange/) project and the final trimester of the bootcamp where we cover back-end development.
 
 I wanted to get some more exposure to MongoDB and Express.js, so I decided to 'upgrade' my front-end BadBank project to be a Full Stack MERN Bank that uses JSON Web Tokens for authentication.  I used the [GoalSetter](https://goalsbypete.herokuapp.com/) app as a starting point for the database and  back-end routes.
 
-The next challenge was to integrate the front-end and back-end into a single application.  For full CRUD functionality, I  developed back-end routes and front-end components to delete users and update passwords.
+The next challenge was to integrate the front-end and back-end into a single application.  For full CRUD functionality, I  developed back-end routes and front-end components to delete users and update passwords.  Please try out the demo and let me know what you think.
 
 ## Related Projects
 
-***Demo:*** GoalSetter [https://goalsbypete.herokuapp.com/](https://goalsbypete.herokuapp.com/)
+> Front-End BadBank
 
-***Demo:*** Front-End BadBank [https://codetracklift.github.io/xchange/](https://codetracklift.github.io/xchange/)
+Demo: [https://codetracklift.github.io/xchange/](https://codetracklift.github.io/xchange/)
+
+Readme: [https://github.com/codeTrackLift/xchange#readme](https://github.com/codeTrackLift/xchange#readme)
+
+> GoalSetter
+
+Demo: [https://goalsbypete.herokuapp.com/](https://goalsbypete.herokuapp.com/)
+
+Readme: [https://github.com/codeTrackLift/goals#readme](https://github.com/codeTrackLift/goals#readme)
 
 ## How to Run
 
