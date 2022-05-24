@@ -64,3 +64,15 @@ section>.btn:hover,
 .imgHover:hover {
     transform: translateY(-0.5rem);
 }
+
+/* Full stack icon styles */
+#heroText>span>i {
+    transform: translateY(6px);
+    position: absolute;
+}
+@media (max-width: 520px) {
+    #heroText>span>i {
+        transform: translateY(6px) translateX(6px);
+    }
+    
+}

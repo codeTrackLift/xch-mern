@@ -87,7 +87,7 @@ export const UserData = () => {
         <section style={sectionStyle}>
 
             <div style={greetingStyle} className='mb-5'>
-                <h6 className='text-center'><span className='fw-bolder textShadowWhite dropShadow px-1'><span style={{letterSpacing: '-0,5px'}}>M<span className='mitMaroon'>I</span>T</span> | xCHANGE</span> believes in <span className='fw-bolder textShadowWhite dropShadow px-1'>xCHANGING</span> everything... <span className='textSilver'>(including user data)</span></h6>  
+                <h5 className='text-center'><span className='fw-bolder textShadowWhite dropShadow px-1'><span style={{letterSpacing: '-0,5px'}}>M<span className='mitMaroon'>I</span>T</span> | xCHANGE</span> MERN Bank back-end was developed using MongoDB, Mongoose, Express.js, Node.js, and uses JSON Web Token authentication.</h5>  
             </div>
 
             { user ? ( 

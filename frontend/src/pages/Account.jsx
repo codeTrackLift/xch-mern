@@ -55,7 +55,7 @@ export const CreateAccount = () => {
             </div>
 
             <div style={articleStyle}>
-                <h6><span className='fw-bolder textShadowWhite dropShadow'><span style={{letterSpacing: '-0,5px'}}>M<span className='mitMaroon'>I</span>T</span> | xCHANGE</span> is for demo purposes only, <span id='doNot' className='mitMaroon'>DO NOT</span> use your real login credentials.</h6>
+                <h4><span className='fw-bolder textShadowWhite dropShadow'><span style={{letterSpacing: '-0,5px'}}>M<span className='mitMaroon'>I</span>T</span> | xCHANGE</span> is for demo purposes only, <span id='doNot' className='mitMaroon'>DO NOT</span> use your real login credentials.</h4>
                 <img src={cartoonMoney} alt='cartoon money' style={moneyStyle} className='imgHover' />
 
             </div>

@@ -1,12 +1,13 @@
 import React from 'react'
 import { NavLink } from 'react-router-dom';
 import { Button, Nav, Row } from 'react-bootstrap';
+import { FaCoins, FaLandmark, FaMobileAlt, FaUserCheck } from 'react-icons/fa';
 
 import { HomeCard } from '../components/partials/HomeCard'
 import { initScrollMagicHome } from '../components/helpers/scrollMagic';
 
 import mobileEuro from '../images/mobileEuro.jpg';
-import qrxChange from '../images/qrxChange.png';
+import qrxchmern from '../images/qr-xchmern.png';
 import mernGoals from '../images/mernGoals.png';
 import pomodoro from '../images/giphyPomodoro.gif';
 import markdown from '../images/markdownPreviewer.jpg';
@@ -54,7 +55,8 @@ export const Home = ({setTitle}) => {
         <section style={sectionStyle}>
 
             <div style={signUpStyle} className='row'>
-                <h5 className='text-start mt-4'>Create an <span className='fw-bolder textShadowWhite dropShadow'>xCHANGE</span> account today!</h5>
+                <h5 className='text-start mt-4'><span className='fw-bolder textShadowWhite dropShadow px-1'><span style={{letterSpacing: '-0,5px'}}>M<span className='mitMaroon'>I</span>T</span> | xCHANGE</span> <i><FaLandmark /></i> has been upgraded...</h5>
+                <h5 className='text-end mt-4'>Now with <i><FaUserCheck /></i> JSON Web Tokens and CRUD <i><FaCoins /></i> functionality!</h5>
                 <img id='mobileEuro' src={mobileEuro} style={mobileStyle} className='img-fluid col-8' alt='Mobile banking with Euros'/>
                 <Nav.Link className='col-4 my-auto' to='/account/' href='/account/' as={NavLink}>
                     <Button 
@@ -65,25 +67,10 @@ export const Home = ({setTitle}) => {
                 </Nav.Link>
                 <div className='d-none d-md-none d-lg-block'>
                     <div className='row'>
-                        <h5 className='text-center my-auto col-8'>Now in the App Store, bank with us on mobile!</h5>
-                        <img src={qrxChange} style={qrxChangeStyle} className='img-fluid col-4 imgHover' alt='QR code for MIT xChange Bad Bank Project'/>
+                        <h5 className='text-center my-auto col-8'>Deployed on Heroku, but still in the <i><FaMobileAlt /></i> App Store!<br/></h5>
+                        <img src={qrxchmern} style={qrxChangeStyle} className='img-fluid col-4 imgHover' alt='QR code for MIT xChange MERN Bank'/>
                     </div>
                 </div>
-            </div>
-
-            <div className='container-fluid text-center'>
-                <h5><u>Video Tour</u></h5>
-                <iframe 
-                    className='ratio-16x9 boxShadow' 
-                    src="https://youtube.com/embed/qeuvfEmJ7_s" 
-                    frameBorder="0" 
-                    allowFullScreen 
-                    title='MIT xCHANGE bootcamp project video' 
-                    style={{
-                        height: 'clamp(10rem,15rem,20rem)',
-                        width: 'clamp(15rem,25rem,95vw)',
-                    }}
-                />
             </div>
             
             <Row style={silverStyle} className='gap-2'>

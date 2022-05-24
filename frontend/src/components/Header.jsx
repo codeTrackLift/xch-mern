@@ -1,5 +1,6 @@
 import { useLocation } from 'react-router-dom';
 import { Row } from 'react-bootstrap';
+import { FaDatabase } from 'react-icons/fa';
 
 import { Exchange } from './Exchange';
 import { CurrentUser } from './partials/CurrentUser';
@@ -9,7 +10,7 @@ import xChange from '../images/xChange.gif';
 import mit from '../images/mit.jpg';
 import bankIcon from '../images/bankIcon.png';
 import mobileBanking from '../images/mobileBanking.png';
-import mitLogo from '../images/mit-logo.png'
+// import mitLogo from '../images/mit-logo.png'
 
 import '../styles/header.css';
 
@@ -65,13 +66,13 @@ const redStyle ={
     marginTop: '-35rem',
 }
 
-const mitLogoStyle = {
-    height: '2rem',
-    marginRight: '0.5rem',
-    marginBottom: '0.25rem',
-    WebkitFilter: 'drop-shadow(2px 2px 2px black)',
-    filter: 'drop-shadow(2px 2px 2px black)',
-}
+// const mitLogoStyle = {
+//     height: '2rem',
+//     marginRight: '0.5rem',
+//     marginBottom: '0.25rem',
+//     WebkitFilter: 'drop-shadow(2px 2px 2px black)',
+//     filter: 'drop-shadow(2px 2px 2px black)',
+// }
 
 const h1Style = {
     color: 'black',
@@ -146,9 +147,9 @@ export const Header = ({setTitle}) => {
                         {/* <img src={mitLogo} alt='MIT xPRO logo' style={mitLogoStyle} />
                         <span className='fw-bolder dropShadow textShadow' style={{fontVariant:'normal',borderLeft:'1px solid white'}}> xPRO </span> */}
 
-                        <span className='fw-bolder dropShadow textShadow'>Full Stack </span>
+                        <span className='fw-bolder dropShadow textShadow mx-4'>Full Stack <i className='fs-5'><FaDatabase /></i> </span>
 
-                        <span className='text-black dropShadowWhite'>M
+                        <span className='text-black dropShadowWhite mx-1'>M
                         <span style={{color:'#990033'}}>E</span>RN </span>
                         <span className='fw-bolder dropShadow textShadow'>Bank</span>
                         <hr />
