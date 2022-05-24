@@ -61,9 +61,8 @@ React, Axios, Bootstrap, Formik, React Router, ScrollMagic
 - [x] Integrate BadBank with back-end
 - [x] Deploy and test on Heroku
 - [x] Develop 'forgot password' route
-- [x] Develop 'delete' route
+- [x] Develop 'delete user' route
 - [x] Add toastify notifications
-
 
 ## MIT License
 
