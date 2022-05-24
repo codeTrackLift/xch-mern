@@ -20,6 +20,7 @@ export const App = () => {
         useEffect(() => {
 
             if(pathname.includes('/account')) {
+                window.scrollTo(0, 800);
                 return
             }
 

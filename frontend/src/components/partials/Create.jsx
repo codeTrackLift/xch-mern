@@ -1,13 +1,44 @@
 import { useEffect, useState } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 import { toast } from 'react-toastify'
+import { FaEye, FaEyeSlash } from 'react-icons/fa'
 import Spinner from './Spinner'
 
 import { register, reset } from '../../features/auth/authSlice'
 import { capitalize } from '../helpers/capitalize'
 
+const accountCardStyle = {
+    margin: '3rem auto',
+    width: '20rem',
+    maxWidth: '90vw',
+    border: '1px solid black',
+    borderRadius: '2px',
+    boxShadow: 'rgba(0, 0, 0, 0.3) 0px 19px 38px, rgba(0, 0, 0, 0.22) 0px 15px 12px',
+}
+
+const cardHeaderStyle = {
+    margin: '-0.05rem -0.05rem 0 -0.05rem',
+    backgroundColor: 'rgb(50,50,50)',
+    color: 'white',
+    textShadow: '1px 1px 1px black',
+    fontVariant: 'small-caps',
+}
+
+const passWrap = {
+    display: "flex",
+    position: "relative",
+};
+
+const eyeStyle = {
+    position: "absolute",
+    right: "1rem",
+    top: ".5rem",
+};
+
 export const Create = () => {
     const [showRegistration, setShowRegistration] = useState(true)
+    const [showPass, setShowPass] = useState(false)
+    const [showPass2, setShowPass2] = useState(false)
     const [formData, setFormData] = useState({
         name: '',
         email: '',
@@ -22,17 +53,13 @@ export const Create = () => {
     const { user, isLoading, isError, isSuccess, message } = useSelector((state) => state.auth)
 
     useEffect(() => {
-
         if(isError) {
             toast.error(message)
         }
-
         if(isSuccess && user) {
             toast.info(`Welcome to the xCHANGE ${capitalize(user.name)}`)
         }
-
         dispatch(reset())
-
     }, [user, isError, isSuccess, message, dispatch])
 
     const onChange = (e) => {
@@ -91,27 +118,10 @@ export const Create = () => {
         return <Spinner />
     }
 
-    const accountCardStyle = {
-        margin: '3rem auto',
-        width: '20rem',
-        maxWidth: '90vw',
-        border: '1px solid black',
-        borderRadius: '2px',
-        boxShadow: 'rgba(0, 0, 0, 0.3) 0px 19px 38px, rgba(0, 0, 0, 0.22) 0px 15px 12px',
-    }
-
-    const cardHeaderStyle = {
-        margin: '-0.05rem -0.05rem 0 -0.05rem',
-        backgroundColor: 'rgb(50,50,50)',
-        color: 'white',
-        textShadow: '1px 1px 1px black',
-        fontVariant: 'small-caps',
-    }
-
     return (       
         <div className='card' style={accountCardStyle}>
             <div className='card-header text-center' style={cardHeaderStyle}>
-                <h5 className='my-auto'>Registration Form</h5>
+                <h5 className='my-auto'>Create New Account</h5>
             </div>
 
             { (!showRegistration && user) ? (
@@ -155,31 +165,45 @@ export const Create = () => {
                             />
                         </div>
                         <div className="form-group">
-                        <label htmlFor='password' className='fw-bold mx-3 mt-2'>Password</label>
-                            <input 
-                                type="password" 
-                                className="form-control mx-auto" 
-                                id='password' 
-                                name='password' 
-                                value={password} 
-                                placeholder='Enter your password' 
-                                onChange={onChange} 
-                                style={{width:'95%'}}
-                            />
-                        </div>
-                        { password.length >= 8 ? (
-                            <div className="form-group">
-                            <label htmlFor='password2' className='fw-bold mx-3 mt-2 mitMaroon'>Confirm Password</label>
+                            <label htmlFor='password' className='fw-bold mx-3 mt-2'>
+                                Password <span className='text-black fw-lighter fst-italic'>{ password && password.length < 8 && ' must be 8 characters'}</span>
+                            </label>
+                            <div style={passWrap}>
                                 <input 
-                                    type="password" 
+                                    type={showPass ? 'text' : 'password'} 
                                     className="form-control mx-auto" 
-                                    id='password2' 
-                                    name='password2' 
-                                    value={password2} 
-                                    placeholder='Confirm your password' 
+                                    id='password' 
+                                    name='password' 
+                                    value={password} 
+                                    placeholder='Enter your password' 
                                     onChange={onChange} 
                                     style={{width:'95%'}}
                                 />
+                                <i style={eyeStyle} onClick={() => setShowPass(!showPass)}>
+                                    { showPass ? <FaEye /> : <FaEyeSlash /> }
+                                </i>
+                            </div>
+                        </div>
+                        { password.length >= 8 ? (
+                            <div className="form-group">
+                            <label htmlFor='password2' className='fw-bold mx-3 mt-2 mitMaroon'>
+                                Confirm Password<span className='text-black fw-lighter fst-italic'>{ password !== password2 && ' must match'}</span>
+                            </label>
+                                <div style={passWrap}>
+                                    <input 
+                                        type={showPass2 ? 'text' : 'password'}
+                                        className="form-control mx-auto" 
+                                        id='password2' 
+                                        name='password2' 
+                                        value={password2} 
+                                        placeholder='Confirm your password' 
+                                        onChange={onChange} 
+                                        style={{width:'95%'}}
+                                    />
+                                    <i className='mitMaroon' style={eyeStyle} onClick={() => setShowPass2(!showPass2)}>
+                                        { showPass2 ? <FaEye /> : <FaEyeSlash /> }
+                                    </i>
+                                </div>
                             </div>
                         ) : (
                             null

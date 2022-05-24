@@ -76,7 +76,6 @@ const updatePassword = asyncHandler(async (req, res) => {
         new: true,
     });
 
-
     res.status(200).json(updatedUser)
 })
 
