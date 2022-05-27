@@ -171,9 +171,9 @@ export const LogIn = () => {
                         </div>
                     </form>
                 </section>
-                <button style={forgotStyle}
+                {/* <button style={forgotStyle}
                     onClick={() => setForgotPw(true)}>Forgot your password?
-                </button>
+                </button> */}
                 </>
             ) : (
                 <>
