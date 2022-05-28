@@ -7,11 +7,9 @@ import Spinner from './Spinner'
 import { createTransaction, getTransactions } from '../../features/transactions/transactionSlice'
 import { updateBalance } from '../../features/auth/authSlice'
 
-import balance from '../helpers/balance'
 import account from '../helpers/account'
 import localeString from '../helpers/localeString'
 import { capitalize } from '../helpers/capitalize'
-import { balanceNumber } from '../helpers/balance';
 
 const articleStyle = {
     margin: '0 auto',
@@ -42,20 +40,15 @@ export const Transaction = ({type}) => {
     const { user } = useSelector((state) => state.auth)
     const { transactions, isLoading } = useSelector((state) => state.transactions)
 
-    // const [currentBalance, setCurrentBalance] = useState(balance({user, transactions}))
     const dispatch = useDispatch()
 
     useEffect(() => {
-        // setCurrentBalance(balance({user, transactions}))
-
-        // if(type === 'Withdraw' && balanceNumber({user, transactions}) - Number(value) < 0) {
         if(type === 'Withdraw' && Number(user.balance) - Number(value) < 0) {
             setOverdraft(true)
         } else {
             setOverdraft(false)
         }
 
-    // }, [user, transactions, value, withdraw, currentBalance, type])
     }, [user, transactions, value, withdraw, type])
 
     useEffect(() => {
@@ -150,7 +143,6 @@ export const Transaction = ({type}) => {
                             ) : ( 
                                 <span>Current Balance: </span>
                             )} <br/>
-                            {/* <span className='fs-6'>${currentBalance.replace('-', '')}</span> */}
                             <span className='fs-6'>${localeString(user.balance)}</span>
                         </div>
                         </h5>

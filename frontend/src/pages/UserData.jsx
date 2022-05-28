@@ -9,7 +9,6 @@ import { getTransactions } from '../features/transactions/transactionSlice'
 import { deleteUser, logout, reset } from '../features/auth/authSlice'
 import account from '../components/helpers/account'
 import localeString from '../components/helpers/localeString'
-import balance from '../components/helpers/balance'
 
 import { capitalize } from '../components/helpers/capitalize';
 
@@ -110,10 +109,6 @@ export const UserData = () => {
                                 <h5>Account #: <span className='fs-6 fw-normal'>{account({user})}</span></h5>
                             </div>
                             <div className='col-sm-6 mt-2'>
-                                {/* <h5>Current Balance: $<span className='fs-5 fw-normal'>{
-                                String(balance({user, transactions})).includes('-0') ? '0.00' :
-                                balance({user, transactions})
-                                }</span></h5> */}
                                 <h5>Current Balance: $<span className='fs-5 fw-normal'>{localeString(user.balance)}</span></h5>
                             </div>
                         </Row>

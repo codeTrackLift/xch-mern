@@ -4,7 +4,7 @@ import { FaEye, FaEyeSlash } from 'react-icons/fa'
 import { toast } from 'react-toastify'
 
 import Spinner from './Spinner'
-import { updatePassword, login, logout, reset } from '../../features/auth/authSlice'
+import { updatePassword, login, reset } from '../../features/auth/authSlice'
 
 const accountCardStyle = {
     margin: '3rem auto',
