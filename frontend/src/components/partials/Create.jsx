@@ -4,7 +4,7 @@ import { toast } from 'react-toastify'
 import { FaEye, FaEyeSlash } from 'react-icons/fa'
 import Spinner from './Spinner'
 
-import { register, reset } from '../../features/auth/authSlice'
+import { logout, register, reset } from '../../features/auth/authSlice'
 import { capitalize } from '../helpers/capitalize'
 
 const accountCardStyle = {
@@ -114,6 +114,11 @@ export const Create = () => {
         }
     }
 
+    const onLogout = () => {
+        dispatch(logout())
+        dispatch(reset())
+    }
+
     if (isLoading) {
         return <Spinner />
     }
@@ -124,7 +129,116 @@ export const Create = () => {
                 <h5 className='my-auto'>Create New Account</h5>
             </div>
 
-            { (!showRegistration && user) ? (
+            { (user && showRegistration) && 
+                <div className='text-center'>
+                    <h5 className='mt-3 mx-3'>Please log out to create another account.</h5>
+                    <button 
+                        id='createAnotherButton'
+                        type='submit' 
+                        className='btn my-3' 
+                        onClick={() => onLogout()}
+                    >Log Out</button>
+                </div>
+            }
+
+            { (user && !showRegistration) &&
+                <div className='text-center'>
+                    <h5 className='mt-3 mx-3'>Your xCHANGE account has been successfully created</h5>
+                    <button 
+                        id='createAnotherButton'
+                        type='submit' 
+                        className='btn my-3' 
+                        onClick={()=>setShowRegistration(true)}
+                    >Add another account</button>
+                </div>
+            }
+
+            { (!user && showRegistration) &&
+                <section className='form'>
+                    <form onSubmit={onSubmit}>
+                        <div className="form-group">
+                            <label htmlFor='name' className='fw-bold mx-3 mt-2'>Name</label>
+                            <input 
+                                type="text" 
+                                className="form-control mx-auto" 
+                                id='name' 
+                                name='name' 
+                                value={name} 
+                                placeholder='Enter your name' 
+                                onChange={onChange} 
+                                style={{width:'95%'}}
+                            />
+                        </div>
+                        <div className="form-group">
+                            <label htmlFor='email' className='fw-bold mx-3 mt-2'>Email</label>
+                            <input 
+                                type="email" 
+                                className="form-control mx-auto" 
+                                id='email' 
+                                name='email' 
+                                value={email} 
+                                placeholder='Enter your email' 
+                                onChange={onChange} 
+                                onBlur={onBlur}
+                                style={{width:'95%'}}
+                            />
+                        </div>
+                        <div className="form-group">
+                            <label htmlFor='password' className='fw-bold mx-3 mt-2'>
+                                Password <span className='text-black fw-lighter fst-italic'>{ password && password.length < 8 && ' must be 8 characters'}</span>
+                            </label>
+                            <div style={passWrap}>
+                                <input 
+                                    type={showPass ? 'text' : 'password'} 
+                                    className="form-control mx-auto" 
+                                    id='password' 
+                                    name='password' 
+                                    value={password} 
+                                    placeholder='Enter your password' 
+                                    onChange={onChange} 
+                                    style={{width:'95%'}}
+                                />
+                                <i style={eyeStyle} onClick={() => setShowPass(!showPass)}>
+                                    { showPass ? <FaEye /> : <FaEyeSlash /> }
+                                </i>
+                            </div>
+                        </div>
+                        { password.length >= 8 ? (
+                            <div className="form-group">
+                            <label htmlFor='password2' className='fw-bold mx-3 mt-2 mitMaroon'>
+                                Confirm Password<span className='text-black fw-lighter fst-italic'>{ password2 && password !== password2 && ' must match'}</span>
+                            </label>
+                                <div style={passWrap}>
+                                    <input 
+                                        type={showPass2 ? 'text' : 'password'}
+                                        className="form-control mx-auto" 
+                                        id='password2' 
+                                        name='password2' 
+                                        value={password2} 
+                                        placeholder='Confirm your password' 
+                                        onChange={onChange} 
+                                        style={{width:'95%'}}
+                                    />
+                                    <i className='mitMaroon' style={eyeStyle} onClick={() => setShowPass2(!showPass2)}>
+                                        { showPass2 ? <FaEye /> : <FaEyeSlash /> }
+                                    </i>
+                                </div>
+                            </div>
+                        ) : (
+                            null
+                        )}
+                        <div className="form-group text-center">
+                            <button id='createButton' type="submit" className='my-3 btn btn-block' disabled={
+                                !name || !email || !password || isError
+                            }>
+                                Submit & Log In
+                            </button>
+                        </div>
+                    </form>
+                </section>
+            }
+
+            {/* { (!showRegistration && user) ? (
                 <div className='text-center'>
                     <h5 className='mt-3 mx-3'>Your xCHANGE account has been successfully created</h5>
                     <button 
@@ -217,7 +331,8 @@ export const Create = () => {
                         </div>
                     </form>
                 </section>
-            )}
+            )} */}
+
         </div>
     )
 }

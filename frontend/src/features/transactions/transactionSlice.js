@@ -13,7 +13,6 @@ const initialState = {
 export const createTransaction = createAsyncThunk(
     'transactions/create', 
     async(transactionData, thunkAPI) => {
-        console.log('transactionData', transactionData)
         try {
             const token = thunkAPI.getState().auth.user.token
             return await transactionService.createTransaction(transactionData, token)
