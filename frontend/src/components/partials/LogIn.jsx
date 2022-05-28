@@ -4,7 +4,7 @@ import { FaEye, FaEyeSlash } from 'react-icons/fa'
 import { toast } from 'react-toastify'
 
 import Spinner from './Spinner'
-import { updatePassword, login, reset } from '../../features/auth/authSlice'
+import { updatePassword, login, logout, reset } from '../../features/auth/authSlice'
 
 const accountCardStyle = {
     margin: '3rem auto',
@@ -117,6 +117,7 @@ export const LogIn = () => {
             setForgotPw(false)
             toast.info('Password updated, please log in')
         }
+        
     }
 
     if(isLoading) {
@@ -171,9 +172,9 @@ export const LogIn = () => {
                         </div>
                     </form>
                 </section>
-                {/* <button style={forgotStyle}
+                <button style={forgotStyle}
                     onClick={() => setForgotPw(true)}>Forgot your password?
-                </button> */}
+                </button>
                 </>
             ) : (
                 <>
@@ -242,7 +243,7 @@ export const LogIn = () => {
                             <button id='logInButton' type="submit" className='my-3 btn btn-block' disabled={
                                 !email || !password || isError || password.length < 8 || password !== password2
                             }>
-                                Update Password
+                                Update & Log In
                             </button>
                             <button id='transactionButton' className='btn btn-block mb-3'
                                 onClick={() => setForgotPw(false)}>Cancel password reset

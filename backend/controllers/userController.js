@@ -51,7 +51,7 @@ const registerUser = asyncHandler(async (req, res) => {
 
 // @desc    Update user password
 // @route   PUT /api/users/:id
-// @access  Private
+// @access  Public
 const updatePassword = asyncHandler(async (req, res) => {
     const { email, password } = req.body
 
@@ -72,11 +72,17 @@ const updatePassword = asyncHandler(async (req, res) => {
     const salt = await bcrypt.genSalt(10)
     const hashedPassword = await bcrypt.hash(password, salt)
 
-    const updatedUser = await User.findOneAndUpdate(email, {password: hashedPassword}, {
+    await User.findOneAndUpdate(email, {password: hashedPassword}, {
         new: true,
     });
 
-    res.status(200).json(updatedUser)
+    res.status(200).json({
+        _id: userExists.id,
+        name: userExists.name,
+        email: userExists.email,
+        password: hashedPassword,
+        token: generateToken(userExists._id),
+    })
 })
 
 // @desc    Authenticate a user

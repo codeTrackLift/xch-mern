@@ -15,7 +15,7 @@ const register = async (userData) => {
 
 // Update password
 const updatePassword = async (userData) => {
-    const response = await axios.put(API_URL + 'password', userData)
+    const response = await axios.put(API_URL, userData)
 
     return response.data
 }
