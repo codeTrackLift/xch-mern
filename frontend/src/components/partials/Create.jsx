@@ -143,7 +143,7 @@ export const Create = () => {
 
             { (user && !showRegistration) &&
                 <div className='text-center'>
-                    <h5 className='mt-3 mx-3'>Your xCHANGE account has been successfully created</h5>
+                    <h5 className='mt-3 mx-3'>You are successfully logged into the xCHANGE!</h5>
                     <button 
                         id='createAnotherButton'
                         type='submit' 
