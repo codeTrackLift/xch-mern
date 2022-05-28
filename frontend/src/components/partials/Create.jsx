@@ -57,7 +57,7 @@ export const Create = () => {
             toast.error(message)
         }
         if(isSuccess && user) {
-            toast.info(`Welcome to the xCHANGE, you are logged in as ${capitalize(user.name)}`)
+            toast.info(`You are logged in as ${capitalize(user.name)}`)
         }
         dispatch(reset())
     }, [user, isError, isSuccess, message, dispatch])
@@ -153,7 +153,7 @@ export const Create = () => {
                 </div>
             }
 
-            { (!user && showRegistration) &&
+            { ((!user && showRegistration) || (!user && isSuccess === false)) &&
                 <section className='form'>
                     <form onSubmit={onSubmit}>
                         <div className="form-group">
