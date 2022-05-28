@@ -212,7 +212,7 @@ export const Create = () => {
                             <button id='createButton' type="submit" className='my-3 btn btn-block' disabled={
                                 !name || !email || !password || isError
                             }>
-                                Create Account
+                                Submit & Log In
                             </button>
                         </div>
                     </form>

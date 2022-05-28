@@ -17,6 +17,10 @@ const register = async (userData) => {
 const updatePassword = async (userData) => {
     const response = await axios.put(API_URL, userData)
 
+    if(response.data) {
+        sessionStorage.setItem('user', JSON.stringify(response.data))
+    }
+
     return response.data
 }
 
@@ -49,12 +53,31 @@ const deleteUser = async (userId, token) => {
     return response.data
 }
 
+// Update balance
+// const updateBalance = async (userId, userData, token) => {
+const updateBalance = async (userData, token) => {
+    const config = {
+        headers: {
+            Authorization: `Bearer ${token}`,
+        }
+    }
+
+    const response = await axios.put(API_URL + userData.id, userData, config)
+
+    if(response.data) {
+        sessionStorage.setItem('user', JSON.stringify(response.data))
+    }
+
+    return response.data
+}
+
 const authService = {
     register,
     updatePassword,
     login,
     logout,
     deleteUser,
+    updateBalance,
 }
 
 export default authService

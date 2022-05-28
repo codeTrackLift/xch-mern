@@ -51,7 +51,7 @@ export const LogIn = () => {
         password: '',
         password2: '',
     })
-
+    
     const { email, password, password2 } = formData
     const { user, isLoading, isError, isSuccess, message } = useSelector((state) => state.auth)
     const dispatch = useDispatch()
@@ -129,7 +129,7 @@ export const LogIn = () => {
             { !forgotPw ? (
                 <>
                 <div className='card-header text-center' style={cardHeaderStyle}>
-                    <h5 className='my-auto'>Existing User Login</h5>
+                    <h5 className='my-auto'>User Login</h5>
                 </div>
                 <section className='form'>
                     <form onSubmit={onSubmit}>
@@ -179,7 +179,7 @@ export const LogIn = () => {
             ) : (
                 <>
                 <div className='card-header text-center' style={cardHeaderStyle}>
-                    <h5 className='my-auto' style={{color:'red'}}>Password Reset Form</h5>
+                    <h5 className='my-auto' style={{color:'red'}}>Change Password</h5>
                 </div>
                 <section className='form'>
                     <form onSubmit={onUpdatePw}>
@@ -243,10 +243,10 @@ export const LogIn = () => {
                             <button id='logInButton' type="submit" className='my-3 btn btn-block' disabled={
                                 !email || !password || isError || password.length < 8 || password !== password2
                             }>
-                                Update & Log In
-                            </button>
+                                Confirm & Log In
+                            </button><br/>
                             <button id='transactionButton' className='btn btn-block mb-3'
-                                onClick={() => setForgotPw(false)}>Cancel password reset
+                                onClick={() => setForgotPw(false)}>Cancel
                             </button>
                         </div>
                     </form>

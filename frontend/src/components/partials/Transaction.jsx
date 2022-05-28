@@ -4,11 +4,12 @@ import { toast } from 'react-toastify'
 import { Card, Row } from 'react-bootstrap';
 import Spinner from './Spinner'
 
-import { getTransactions } from '../../features/transactions/transactionSlice'
-import { createTransaction } from '../../features/transactions/transactionSlice'
+import { createTransaction, getTransactions } from '../../features/transactions/transactionSlice'
+import { updateBalance } from '../../features/auth/authSlice'
 
 import balance from '../helpers/balance'
 import account from '../helpers/account'
+import localeString from '../helpers/localeString'
 import { capitalize } from '../helpers/capitalize'
 import { balanceNumber } from '../helpers/balance';
 
@@ -41,19 +42,21 @@ export const Transaction = ({type}) => {
     const { user } = useSelector((state) => state.auth)
     const { transactions, isLoading } = useSelector((state) => state.transactions)
 
-    const [currentBalance, setCurrentBalance] = useState(balance({user, transactions}))
+    // const [currentBalance, setCurrentBalance] = useState(balance({user, transactions}))
     const dispatch = useDispatch()
 
     useEffect(() => {
-        setCurrentBalance(balance({user, transactions}))
+        // setCurrentBalance(balance({user, transactions}))
 
-        if(type === 'Withdraw' && balanceNumber({user, transactions}) - Number(value) < 0) {
+        // if(type === 'Withdraw' && balanceNumber({user, transactions}) - Number(value) < 0) {
+        if(type === 'Withdraw' && Number(user.balance) - Number(value) < 0) {
             setOverdraft(true)
         } else {
             setOverdraft(false)
         }
 
-    }, [user, transactions, value, withdraw, currentBalance, type])
+    // }, [user, transactions, value, withdraw, currentBalance, type])
+    }, [user, transactions, value, withdraw, type])
 
     useEffect(() => {
         dispatch(getTransactions())
@@ -89,6 +92,15 @@ export const Transaction = ({type}) => {
             toast.error('Amount must be greater than $0')
             return
         }
+
+        const newBalance = Number(e.target.value.value) + user.balance
+        const userData = {
+            id: user._id,
+            email: user.email,
+            balance: newBalance.toFixed(2),
+        }
+        dispatch(updateBalance(userData))
+        
         dispatch(createTransaction({ value }))
         toast.info('Deposit successful')
         setValue('')
@@ -101,6 +113,15 @@ export const Transaction = ({type}) => {
             return
         }
         let value = withdraw
+
+        const newBalance = Number(value) + user.balance
+        const userData = {
+            id: user._id,
+            email: user.email,
+            balance: newBalance.toFixed(2),
+        }
+        dispatch(updateBalance(userData))
+
         dispatch(createTransaction({ value }))
         toast.info('Withdraw successful')
         setValue('')
@@ -129,7 +150,8 @@ export const Transaction = ({type}) => {
                             ) : ( 
                                 <span>Current Balance: </span>
                             )} <br/>
-                            <span className='fs-6'>${currentBalance.replace('-', '')}</span>
+                            {/* <span className='fs-6'>${currentBalance.replace('-', '')}</span> */}
+                            <span className='fs-6'>${localeString(user.balance)}</span>
                         </div>
                         </h5>
                     </div>
