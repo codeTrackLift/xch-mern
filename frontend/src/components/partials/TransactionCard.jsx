@@ -2,7 +2,6 @@ import { useEffect, useState } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 import { toast } from 'react-toastify'
 import { Card, Row } from 'react-bootstrap';
-import Spinner from './Spinner'
 
 import { createTransaction, getTransactions } from '../../features/transactions/transactionSlice'
 import { updateBalance } from '../../features/auth/authSlice'
@@ -33,12 +32,12 @@ const cardStyle ={
     boxShadow: 'rgba(0, 0, 0, 0.3) 0px 19px 38px, rgba(0, 0, 0, 0.22) 0px 15px 12px',
 }
 
-export const Transaction = ({type}) => {
+export const TransactionCard = ({type}) => {
     const [value, setValue] = useState('')
     const [withdraw, setWithdraw] = useState('')
     const [overdraft, setOverdraft] = useState(false)
     const { user } = useSelector((state) => state.auth)
-    const { transactions, isLoading } = useSelector((state) => state.transactions)
+    const { transactions } = useSelector((state) => state.transactions)
 
     const dispatch = useDispatch()
 
@@ -118,10 +117,6 @@ export const Transaction = ({type}) => {
         dispatch(createTransaction({ value }))
         toast.info('Withdraw successful')
         setValue('')
-    }
-
-    if (isLoading) {
-        return <Spinner />
     }
 
     return (

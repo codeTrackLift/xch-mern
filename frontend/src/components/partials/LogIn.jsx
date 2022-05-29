@@ -3,7 +3,6 @@ import { useSelector, useDispatch } from 'react-redux'
 import { FaEye, FaEyeSlash } from 'react-icons/fa'
 import { toast } from 'react-toastify'
 
-import Spinner from './Spinner'
 import { updatePassword, login, reset } from '../../features/auth/authSlice'
 
 const accountCardStyle = {
@@ -118,10 +117,6 @@ export const LogIn = () => {
             toast.info('Password updated, please log in')
         }
         
-    }
-
-    if(isLoading) {
-        return <Spinner />
     }
 
     return (

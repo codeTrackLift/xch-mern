@@ -2,7 +2,6 @@ import { useEffect, useState } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 import { toast } from 'react-toastify'
 import { FaEye, FaEyeSlash } from 'react-icons/fa'
-import Spinner from './Spinner'
 
 import { logout, register, reset } from '../../features/auth/authSlice'
 import { capitalize } from '../helpers/capitalize'
@@ -50,7 +49,7 @@ export const Create = () => {
 
     const dispatch = useDispatch()
 
-    const { user, isLoading, isError, isSuccess, message } = useSelector((state) => state.auth)
+    const { user, isError, isSuccess, message } = useSelector((state) => state.auth)
 
     useEffect(() => {
         if(isError) {
@@ -114,10 +113,6 @@ export const Create = () => {
     const onLogout = () => {
         dispatch(logout())
         dispatch(reset())
-    }
-
-    if (isLoading) {
-        return <Spinner />
     }
 
     return (       

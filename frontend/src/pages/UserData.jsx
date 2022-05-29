@@ -4,12 +4,11 @@ import { useSelector, useDispatch } from 'react-redux'
 import { FaUserCheck, FaUserCog, FaUserShield } from 'react-icons/fa'
 
 import TransactionItem from '../components/partials/TransactionItem'
-import Spinner from '../components/partials/Spinner'
 import { getTransactions } from '../features/transactions/transactionSlice'
 import { deleteUser, logout, reset } from '../features/auth/authSlice'
+
 import account from '../components/helpers/account'
 import localeString from '../components/helpers/localeString'
-
 import { capitalize } from '../components/helpers/capitalize';
 
 const sectionStyle = {
@@ -46,7 +45,7 @@ const cardStyle ={
 export const UserData = () => {
     const [confirmDelete, setConfirmDelete] = useState(false)
     const { user, isError, message } = useSelector((state) => state.auth)
-    const { transactions, isLoading } = useSelector((state) => state.transactions)
+    const { transactions } = useSelector((state) => state.transactions)
     const dispatch = useDispatch()
 
     const clearHomeActive = () => {
@@ -79,10 +78,6 @@ export const UserData = () => {
 
     const onConfirm = () => {
         setConfirmDelete(true)
-    }
-
-    if (isLoading) {
-        return <Spinner />
     }
 
     return (

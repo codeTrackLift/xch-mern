@@ -3,7 +3,7 @@ import { Card, Row } from 'react-bootstrap'
 import { useSelector } from 'react-redux'
 import { FaRegCreditCard, FaRegMoneyBillAlt } from 'react-icons/fa'
 
-import { Transaction } from '../components/partials/Transaction';
+import { TransactionCard } from '../components/partials/TransactionCard';
 import { initScrollMagicTransaction } from '../components/helpers/scrollMagic';
 
 import cashAtm from '../images/cashAtm.png'
@@ -61,7 +61,7 @@ export const Withdraw = () => {
             </Row>
             
             { user ? (
-                <Transaction type='Withdraw' />
+                <TransactionCard type='Withdraw' />
             ) : (
                 <Card style={cardStyle}>
                     <Card.Header className='text-center' style={cardHeaderStyle}>

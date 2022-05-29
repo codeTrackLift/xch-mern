@@ -3,7 +3,7 @@ import { Card, Row } from 'react-bootstrap'
 import { useSelector } from 'react-redux'
 import { FaLandmark, FaRegMoneyBillAlt } from 'react-icons/fa'
 
-import { Transaction } from '../components/partials/Transaction';
+import { TransactionCard } from '../components/partials/TransactionCard';
 import { initScrollMagicTransaction } from '../components/helpers/scrollMagic';
 
 import wallet from '../images/wallet.png'
@@ -61,7 +61,7 @@ export const Deposit = () => {
             </Row>
 
             { user ? (
-                <Transaction type='Deposit' />
+                <TransactionCard type='Deposit' />
             ) : (
                 <Card style={cardStyle}>
                     <Card.Header className='text-center' style={cardHeaderStyle}>

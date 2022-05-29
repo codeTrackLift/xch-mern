@@ -5,7 +5,6 @@ import { useSelector } from 'react-redux'
 import { CurrentUser } from '../components/partials/CurrentUser';
 import { Create } from '../components/partials/Create';
 import { LogIn } from '../components/partials/LogIn';
-import { GuestLogIn } from '../components/partials/GuestLogIn';
 
 import cartoonMoney from '../images/cartoonMoney.png';
 
