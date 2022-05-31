@@ -72,7 +72,7 @@ export const Home = ({setTitle}) => {
         if (animateReact) {
             setAnimateReact(false);
             setReactImage(hourGlass);
-            setReactImage(reactAnimated);
+            setTimeout(() => setReactImage(reactAnimated), 500);
             return;
         } 
         setAnimateReact(true);
