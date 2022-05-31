@@ -54,7 +54,7 @@ const qrxChangeStyle = {
 const componentDivStyle = {
     margin: '4rem auto',
     maxWidth: '960px',
-    width: '100%',
+    width: '95vw',
 }
 
 const componentButtonStyle = {
@@ -101,8 +101,9 @@ export const Home = ({setTitle}) => {
                 </div>
             </div>
 
-            <div style={componentDivStyle} className='boxShadow'>
-                <button style={componentButtonStyle} onClick={handleAnimateReact}>
+            <div style={componentDivStyle} className='text-center'>
+                <h4 style={{fontVariant:'small-caps'}}><b>Site Map</b></h4>
+                <button style={componentButtonStyle} onClick={handleAnimateReact} className='boxShadow'>
                     <img src={reactImage} alt='xCHANGE front end React component diagram'  className='img-fluid' />
                 </button>
             </div>
