@@ -6,6 +6,9 @@ import { FaCoins, FaLandmark, FaMobileAlt, FaUserCheck } from 'react-icons/fa';
 import { HomeCard } from '../components/partials/HomeCard'
 import { initScrollMagicHome } from '../components/helpers/scrollMagic';
 
+import reactStatic from '../images/xchMern_reactComponentsStatic.jpg'
+import reactAnimated from '../images/xchMern_reactComponentsAnimated.gif'
+
 import mobileEuro from '../images/mobileEuro.jpg';
 import qrxchmern from '../images/qr-xchmern.png';
 import mernGoals from '../images/mernGoals.png';
@@ -47,7 +50,19 @@ const qrxChangeStyle = {
     maxWidth: '10rem',
 }
 
+const componentDivStyle = {
+    margin: '4rem auto',
+    maxWidth: '960px',
+    width: '100%',
+}
+
+const componentButtonStyle = {
+    border: '0.5rem outset silver',
+    borderRadius: '2px',
+}
+
 export const Home = ({setTitle}) => {
+    const [animateReact, setAnimateReact] = React.useState(false);
     
     setTimeout(initScrollMagicHome,50);
 
@@ -71,6 +86,12 @@ export const Home = ({setTitle}) => {
                         <img src={qrxchmern} style={qrxChangeStyle} className='img-fluid col-4 imgHover' alt='QR code for MIT xChange MERN Bank'/>
                     </div>
                 </div>
+            </div>
+
+            <div style={componentDivStyle} className='boxShadow'>
+                <button style={componentButtonStyle} onClick={() => setAnimateReact(!animateReact)}>
+                    <img src={animateReact ? reactAnimated : reactStatic} alt='xCHANGE front end React component diagram'  className='img-fluid' />
+                </button>
             </div>
             
             <Row style={silverStyle} className='gap-2'>
