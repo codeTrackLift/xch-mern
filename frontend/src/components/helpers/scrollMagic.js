@@ -56,28 +56,28 @@ export const initScrollMagicHeader = () => {
     const heroLeftController = new ScrollMagic.Controller();
     const heroLeft = new ScrollMagic.Scene({
             triggerElement: '#heroLeft',
-            offset: 100
+            offset: 50
         })        
         .setClassToggle('#heroLeft', 'show')
         .addTo(heroLeftController);
     const heroRightController = new ScrollMagic.Controller();
     const heroRight = new ScrollMagic.Scene({
             triggerElement: '#heroLeft',
-            offset: 100
+            offset: 50
         })        
         .setClassToggle('#heroRight', 'show')
         .addTo(heroRightController);
     const heroTextController = new ScrollMagic.Controller();
     const heroText = new ScrollMagic.Scene({
             triggerElement: '#heroLeft',
-            offset: 100
+            offset: 50
         })        
         .setClassToggle('#heroText', 'show')
         .addTo(heroTextController);
     const redRowController = new ScrollMagic.Controller();
     const redRow = new ScrollMagic.Scene({
             triggerElement: '#heroLeft',
-            offset: 100
+            offset: 50
         })        
         .setClassToggle('#redRow', 'show')
         .addTo(redRowController);
