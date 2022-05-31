@@ -69,14 +69,14 @@ export const Home = ({setTitle}) => {
     setTimeout(initScrollMagicHome,50);
 
     const handleAnimateReact = () => {
-        if (animateReact) {
-            setAnimateReact(false);
+        if (!animateReact) {
             setReactImage(hourGlass);
             setTimeout(() => setReactImage(reactAnimated), 500);
+            setAnimateReact(true);
             return;
         } 
-        setAnimateReact(true);
         setReactImage(reactStatic);
+        setAnimateReact(false);
     }
 
     return (
