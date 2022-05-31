@@ -8,6 +8,7 @@ import { initScrollMagicHome } from '../components/helpers/scrollMagic';
 
 import reactStatic from '../images/xchMern_reactComponentsStatic.jpg'
 import reactAnimated from '../images/xchMern_reactComponentsAnimated.gif'
+import hourGlass from '../images/hourGlass.gif'
 
 import mobileEuro from '../images/mobileEuro.jpg';
 import qrxchmern from '../images/qr-xchmern.png';
@@ -63,8 +64,20 @@ const componentButtonStyle = {
 
 export const Home = ({setTitle}) => {
     const [animateReact, setAnimateReact] = React.useState(false);
+    const [reactImage, setReactImage] = React.useState(reactStatic);
     
     setTimeout(initScrollMagicHome,50);
+
+    const handleAnimateReact = () => {
+        if (animateReact) {
+            setAnimateReact(false);
+            setReactImage(hourGlass);
+            setReactImage(reactAnimated);
+            return;
+        } 
+        setAnimateReact(true);
+        setReactImage(reactStatic);
+    }
 
     return (
         <section style={sectionStyle}>
@@ -89,8 +102,8 @@ export const Home = ({setTitle}) => {
             </div>
 
             <div style={componentDivStyle} className='boxShadow'>
-                <button style={componentButtonStyle} onClick={() => setAnimateReact(!animateReact)}>
-                    <img src={animateReact ? reactAnimated : reactStatic} alt='xCHANGE front end React component diagram'  className='img-fluid' />
+                <button style={componentButtonStyle} onClick={handleAnimateReact}>
+                    <img src={reactImage} alt='xCHANGE front end React component diagram'  className='img-fluid' />
                 </button>
             </div>
             
