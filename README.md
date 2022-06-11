@@ -3,6 +3,8 @@
 <img src='./frontend/src/images/giphyStockTicker.gif' alt='MIT xCHANGE custom JavaScript stock ticker animated gif'>
 
  >***Demo:*** Heroku Deployment [https://xch-mern.herokuapp.com/](https://xch-mern.herokuapp.com/)
+ 
+ ***Video Tour*** [https://youtu.be/yvSPJEmRH1w](https://youtu.be/yvSPJEmRH1w)
 
 <img src='./frontend/src/images/mernStackTrans.png' alt='MongoDB, Express.js, React.js, Node.js MERN Stack' width='200'>
  
