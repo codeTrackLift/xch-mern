@@ -169,19 +169,35 @@ export const Home = ({setTitle}) => {
 
             </Row>
 
-            <div className='container-fluid text-center'>
-                <h5><u>Video Tour</u></h5>
-                <iframe 
-                    className='ratio-16x9 boxShadow' 
-                    src="https://youtube.com/embed/yvSPJEmRH1w" 
-                    frameBorder="0" 
-                    allowFullScreen 
-                    title='MIT xCHANGE bootcamp project video' 
-                    style={{
-                        height: 'clamp(10rem,15rem,20rem)',
-                        width: 'clamp(15rem,25rem,95vw)',
-                    }}
-                />
+            <div className='d-flex flex-wrap justify-content-evenly'>
+                <div className='col-lg-6 my-4 text-center'>
+                    <h5><u>Application Overview</u></h5>
+                    <iframe 
+                        className='ratio-16x9 boxShadow' 
+                        src="https://youtube.com/embed/yvSPJEmRH1w" 
+                        frameBorder="0" 
+                        allowFullScreen 
+                        title='MIT xCHANGE bootcamp project video' 
+                        style={{
+                            height: 'clamp(10rem,15rem,20rem)',
+                            width: 'clamp(15rem,25rem,95vw)',
+                        }}
+                    />
+                </div>
+                <div className='col-lg-6 my-4 text-center'>
+                    <h5><u>Database and API</u></h5>
+                    <iframe 
+                        className='ratio-16x9 boxShadow' 
+                        src="https://youtube.com/embed/-0C40KMb4Nc" 
+                        frameBorder="0" 
+                        allowFullScreen 
+                        title='MIT xCHANGE bootcamp project video' 
+                        style={{
+                            height: 'clamp(10rem,15rem,20rem)',
+                            width: 'clamp(15rem,25rem,95vw)',
+                        }}
+                    />
+                </div>
             </div>
             
         </section>
