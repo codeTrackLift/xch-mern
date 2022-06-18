@@ -17,7 +17,7 @@
  <ol>
     <li>HTML, CSS, JavaScript</li>
     <li>MongoDB, Mongoose, Express, React, Redux, Node</li>
-    <li>Axios, Bootstrap, React Router, ScrollMagic, Toastify</li>
+    <li>Axios, Bootstrap, React Router, ScrollMagic, Toastify, React Icons</li>
     <li>API Fetch and Dynamic Component Rendering</li>
     <li>Input Validation and Error Handling</li>
     <li>Mobile First and Responsive Design</li>
@@ -67,7 +67,7 @@ API data is fetched from CoinGecko.com upon page load. The app will display the 
 
 > Dependencies
 
-React, Axios, Bootstrap, Formik, React Router, ScrollMagic
+React, Axios, Bootstrap, Formik, React Router, ScrollMagic, Toastify, React Icons
 
 ## Future Roadmap
 
