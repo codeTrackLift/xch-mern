@@ -10,6 +10,8 @@
 
  *Database and API:* [https://youtu.be/-0C40KMb4Nc](https://youtu.be/-0C40KMb4Nc)
 
+ *Troubleshooting and Hosting:* [https://youtu.be/sS5UZLYyZs4](https://youtu.be/sS5UZLYyZs4)
+
 <img src='./frontend/src/images/mernStackTrans.png' alt='MongoDB, Express.js, React.js, Node.js MERN Stack' width='200'>
  
 
