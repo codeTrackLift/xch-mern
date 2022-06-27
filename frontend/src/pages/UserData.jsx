@@ -107,21 +107,9 @@ export const UserData = () => {
                                 <h5>Current Balance: $<span className='fs-5 fw-normal'>{localeString(user.balance)}</span></h5>
                             </div>
                         </Row>
-                        { confirmDelete ? (
-                            <div className='text-center'>
-                                <button className='btn mt-4 mx-5' onClick={() => setConfirmDelete(false)} id='createButton' style={deleteStyle}>Cancel</button> 
-                                <button className='btn mt-4 mx-5' onClick={onDeleteUser} id='transactionButton' style={deleteStyle}>Confirm</button> 
-                                <p><span className='fw-bolder mitMaroon'>CONFIRM DELETE</span><br/>Deleting a user is permanent!</p>
-                            </div>
-                        ) : (
-                            <div className='text-center'>
-                                <button className='btn mt-4' onClick={onConfirm} id='transactionButton' style={deleteStyle}>Delete User</button> 
-                                <p>Cannot undo!</p>
-                            </div>
-                        )}
                         
                         <hr />
-                        <h5 className='textGray text-center'>Transaction History (Newest to Oldest)</h5>
+                        <h5 className='textGray text-center my-4'>Transaction History (Newest to Oldest)</h5>
                         { transactions.length > 0 ? (
                             <div className='transactions'>
                                 {transactions.map((transaction) => {
@@ -131,6 +119,21 @@ export const UserData = () => {
                         ) : ( 
                             <h3 style={{color:'silver'}}>You have no transactions</h3>
                         )}
+                        <hr />
+
+                        { confirmDelete ? (
+                            <div className='text-center'>
+                                <button className='btn mt-2 mx-5' onClick={() => setConfirmDelete(false)} id='createButton' style={deleteStyle}>Cancel</button> 
+                                <button className='btn mt-2 mx-5' onClick={onDeleteUser} id='transactionButton' style={deleteStyle}>Confirm</button> 
+                                <p><span className='fw-bolder mitMaroon'>CONFIRM DELETE</span><br/>Deleting a user is permanent!</p>
+                            </div>
+                        ) : (
+                            <div className='text-center'>
+                                <button className='btn mt-2' onClick={onConfirm} id='transactionButton' style={deleteStyle}>Delete User</button> 
+                                <p>Cannot undo!</p>
+                            </div>
+                        )}
+
                     </Card.Body>
                 </Card>
             ) : (
