@@ -235,6 +235,7 @@ export const LogIn = () => {
                             null
                         )}
                         <div className="form-group text-center">
+                            <p>This feature is for demo purposes only</p>
                             <button id='logInButton' type="submit" className='my-3 btn btn-block' disabled={
                                 !email || !password || isError || password.length < 8 || password !== password2
                             }>
@@ -244,7 +245,7 @@ export const LogIn = () => {
                                 onClick={() => setForgotPw(false)}>Cancel
                             </button>
                         </div>
-                    </form>
+                    </form>                   
                 </section>
                 </>
             )}
