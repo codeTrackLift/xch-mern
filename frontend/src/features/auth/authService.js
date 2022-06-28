@@ -54,7 +54,6 @@ const deleteUser = async (userId, token) => {
 }
 
 // Update balance
-// const updateBalance = async (userId, userData, token) => {
 const updateBalance = async (userData, token) => {
     const config = {
         headers: {

@@ -82,7 +82,7 @@ export const deleteUser = createAsyncThunk(
 )
 
 // Update balance
-export const updateBalance = createAsyncThunk('goals/update', async (userData, thunkAPI) => {
+export const updateBalance = createAsyncThunk('user/balance', async (userData, thunkAPI) => {
     try {
         const token = thunkAPI.getState().auth.user.token
         return await authService.updateBalance(
