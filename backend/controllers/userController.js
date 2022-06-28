@@ -117,7 +117,6 @@ const getMe = asyncHandler(async (req, res) => {
     res.status(200).json(req.user)
 })
 
-
 // Generate token
 const generateToken = (id) => {
     return jwt.sign({ id }, process.env.JWT_SECRET, { 
@@ -149,7 +148,7 @@ const deleteUser = asyncHandler(async (req, res) => {
 })
 
 // @desc    Update balance
-// @route   PUT /api/users/:id
+// @route   PUT /api/users/balance/:id
 // @access  Private
 const updateBalance = asyncHandler(async (req, res) => {
     const { id, email, balance } = req.body

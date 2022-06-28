@@ -61,7 +61,7 @@ const updateBalance = async (userData, token) => {
         }
     }
 
-    const response = await axios.put(API_URL + userData.id, userData, config)
+    const response = await axios.put(API_URL + 'balance/' + userData.id, userData, config)
 
     if(response.data) {
         sessionStorage.setItem('user', JSON.stringify(response.data))
