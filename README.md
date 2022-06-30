@@ -33,7 +33,7 @@ MIT xCHANGE Full Stack MERN Bank was developed during coding bootcamp week 15. T
 
 I wanted to get some more exposure to MongoDB and Express.js, so I decided to 'upgrade' my front-end BadBank project to be a Full Stack MERN Bank that uses JSON Web Tokens for authentication.  I used the [GoalSetter](https://goalsbypete.herokuapp.com/) app as a starting point for the database and  back-end routes.
 
-The next challenge was to integrate the front-end and back-end into a single application.  For full CRUD functionality, I  developed back-end routes and front-end components to delete users and update passwords.  Please try out the demo and let me know what you think.
+The next challenge was to integrate the front-end and back-end into a single application.  For full CRUD functionality, I  developed back-end routes and front-end components to update passwords and delete users.  Please try out the demo and let me know what you think.  Please note, it is deployed on Heroku and may take a minute to spin up.
 
 ## Related Projects
 
