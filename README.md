@@ -71,6 +71,11 @@ API data is fetched from CoinGecko.com upon page load. The app will display the 
 
 React, Axios, Bootstrap, Formik, React Router, ScrollMagic, Toastify, React Icons
 
+## API Routes
+
+<img src='./frontend/src/images/apiRoutes.jpg' alt='API routes' width='500'> 
+<img src='./frontend/src/images/apiGraph.jpg' alt='API graph' width='500'> 
+
 ## Future Roadmap
 
 - [x] Develop back-end using MongoDB and Express.js
