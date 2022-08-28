@@ -12,7 +12,7 @@
 #heroRight,#heroText {
     transition: all 0.75s ease-in-out;
     opacity: 0;
-    transform: translateX(-40vw) scale(0);
+    transform: translateX(-10rem) scale(0);
 }
 
 #heroRight.show,#heroText.show {
