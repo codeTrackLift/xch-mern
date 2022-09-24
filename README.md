@@ -49,11 +49,11 @@ Demo: [https://goalsbypete.herokuapp.com/](https://goalsbypete.herokuapp.com/)
 
 Readme: [https://github.com/codeTrackLift/goals#readme](https://github.com/codeTrackLift/goals#readme)
 
-## How to Run
+## How to Demo
 
 > Heroku Deployment
 
-This app is deployed on Heroku and may take a minute to start up.
+This app is deployed on Heroku.
 
 > Account Management & User Data
 
@@ -70,6 +70,20 @@ API data is fetched from CoinGecko.com upon page load. The app will display the 
 > Dependencies
 
 React, Axios, Bootstrap, Formik, React Router, ScrollMagic, Toastify, React Icons
+
+## How to Install and Run
+
+To setup the backend, from the root of the project directory, run
+
+> `npm i`
+
+To setup the frontend, from the `/frontend` directory of the project, run
+
+> `npm i`
+
+To start the application, from the root of the project directory, run
+
+> `npm run server` and `npm run client`
 
 ## File Structure
 ```
