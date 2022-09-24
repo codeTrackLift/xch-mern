@@ -71,6 +71,38 @@ API data is fetched from CoinGecko.com upon page load. The app will display the 
 
 React, Axios, Bootstrap, Formik, React Router, ScrollMagic, Toastify, React Icons
 
+## File Structure
+```
+.    
+├── ..
+├── backend             # Backend code
+│   ├── config          # Database config
+│   ├── controllers     # Controllers
+│   ├── middleware      # Authentication and errors
+│   ├── models          # Mongoose schema
+│   ├── routes          # Server routes
+│   └── server.js 
+├── frontend            # Frontend code
+│   ├── public          # Index.html, favicon, robots.txt
+│   ├── src             # Frontend entry point
+│   │   ├── app         # Redux store
+│   │   ├── components  # JSX components
+│   │   ├── features    # Service and slice
+│   │   ├── images      # Assets
+│   │   ├── pages       # JSX pages
+│   │   ├── styles      # CSS
+│   │   └── index.js
+│   ├── .gitignore
+│   ├── README.md
+│   ├── package-lock.json
+│   └── package.json
+├── .gitignore
+├── LICENSE
+├── package-lock.json     
+├── package.json     
+└── README.md
+```
+
 ## API Routes
 
 <img src='./frontend/src/images/apiRoutes.jpg' alt='API routes' width='500'> 
